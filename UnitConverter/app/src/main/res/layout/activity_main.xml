@@ -9,6 +9,8 @@
     tools:context=".MainActivity">
 
     <EditText
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:id="@+id/editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
