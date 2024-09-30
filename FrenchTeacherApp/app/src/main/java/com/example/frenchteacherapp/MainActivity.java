@@ -1,6 +1,9 @@
 package com.example.frenchteacherapp;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +12,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button blackBtn, yellowBtn, redBtn, purpleBtn, greenBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +25,23 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        blackBtn = findViewById(R.id.blackBtn);
+        redBtn = findViewById(R.id.redBtn);
+        yellowBtn = findViewById(R.id.yellowBtn);
+        purpleBtn = findViewById(R.id.purpleBtn);
+        greenBtn = findViewById(R.id.greenBtn);
+
+        redBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(
+                        getApplicationContext(),
+                        R.raw.red
+                );
+                mediaPlayer.start();
+            }
+        });
     }
+
 }
