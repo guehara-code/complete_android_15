@@ -34,7 +34,7 @@ public class MyCustomAdapter extends ArrayAdapter<Planet> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Planet planet = getItem(position);
+        Planet planets = getItem(position);
 
         MyViewHolder myViewHolder;
         final View result;
@@ -52,6 +52,18 @@ public class MyCustomAdapter extends ArrayAdapter<Planet> {
             myViewHolder.planetImg = (ImageView) convertView.findViewById(R.id.imageView);
 
             result = convertView;
+            convertView.setTag(myViewHolder);
+        } else {
+            //the view is recycled
+            myViewHolder = (MyViewHolder) convertView.getTag();
+            result = convertView;
         }
+
+        // Getting the data from model class(Planet)
+        myViewHolder.planetName.setText(planets.getPlanetName());
+        myViewHolder.moonCount.setText(planets.getMoonCount());
+        myViewHolder.planetImg.setImageResource(planets.getPlanetImage());
+
+        return result;
     }
 }
