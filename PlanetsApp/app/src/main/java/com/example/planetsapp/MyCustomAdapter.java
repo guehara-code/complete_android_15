@@ -64,8 +64,7 @@ public class MyCustomAdapter extends ArrayAdapter<Planet> {
         myViewHolder.planetName.setText(planets.getPlanetName());
         myViewHolder.moonCount.setText(planets.getMoonCount());
         myViewHolder.planetImg.setImageResource(planets.getPlanetImage());
-        Toast toast = Toast.makeText(this.getContext(), "passou", Toast.LENGTH_SHORT);
-        toast.show();
+
         return result;
     }
 }
