@@ -1,12 +1,14 @@
 package com.example.marketapp;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerViewAccessibilityDelegate;
 
@@ -49,7 +51,14 @@ public class MainActivity extends AppCompatActivity {
         itemList.add(item5);
         itemList.add(item6);
 
+
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+
         myAdapter = new MyAdapter(itemList);
         recyclerView.setAdapter(myAdapter);
+
     }
 }
