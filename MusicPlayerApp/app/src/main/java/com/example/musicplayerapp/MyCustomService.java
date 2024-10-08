@@ -27,9 +27,16 @@ public class MyCustomService extends Service {
        return START_STICKY;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        player.stop();
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+
         return null;
     }
 }
