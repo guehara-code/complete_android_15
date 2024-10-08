@@ -1,6 +1,8 @@
 package com.example.musicplayerapp;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView txt;
+    Button start_btn, stop_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +25,9 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        start_btn = findViewById(R.id.start_btn);
+        stop_btn = findViewById(R.id.stop_btn);
+        txt = findViewById(R.id.textView);
     }
 }
