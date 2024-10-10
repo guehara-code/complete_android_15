@@ -20,6 +20,19 @@ public class FirstFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+        Toast.makeText(context, "OnAttach() is Called", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Toast.makeText(getActivity(), "OnCreate() is Called", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Toast.makeText(getActivity(), "OnResume() is Called", Toast.LENGTH_SHORT).show();
     }
 
     @Override
