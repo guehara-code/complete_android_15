@@ -4,6 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="equation"
+            type="com.example.quadraticequationsolver.Equation"
+            />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:id="@+id/main"
@@ -13,6 +20,9 @@
         tools:context=".MainActivity">
 
         <EditText
+            android:text="@={equation.a}"
+            android:textSize="20sp"
+            android:textColorHint="@color/white"
             android:id="@+id/edit1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -25,6 +35,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:text="@={equation.b}"
+            android:textSize="20sp"
+            android:textColorHint="@color/white"
             android:id="@+id/edit2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,6 +50,9 @@
             app:layout_constraintTop_toBottomOf="@+id/edit1" />
 
         <EditText
+            android:text="@={equation.c}"
+            android:textSize="20sp"
+            android:textColorHint="@color/white"
             android:id="@+id/edit3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -49,6 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edit2" />
 
         <Button
+            android:onClick="@{equation::solveEquation"
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
