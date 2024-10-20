@@ -12,14 +12,14 @@ public class Contacts {
     private int id;
 
     @ColumnInfo(name = "contact_name")
-    private String nane;
+    private String name;
 
     @ColumnInfo(name = "contact_email")
     private String email;
 
-    public Contacts(int id, String nane, String email) {
+    public Contacts(int id, String name, String email) {
         this.id = id;
-        this.nane = nane;
+        this.name = name;
         this.email = email;
     }
 
@@ -34,12 +34,12 @@ public class Contacts {
         this.id = id;
     }
 
-    public String getNane() {
-        return nane;
+    public String getName() {
+        return name;
     }
 
     public void setNane(String nane) {
-        this.nane = nane;
+        this.name = nane;
     }
 
     public String getEmail() {
