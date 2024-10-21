@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ContactDatabase contactDatabase;
-    private ArrayList<Contacts> contacts = new ArrayList<>();
+    private ArrayList<Contacts> contactsArrayList = new ArrayList<>();
 
     private MyAdapter myAdapter;
 
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Log.v("TAGY", "START");
 
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         handlers = new MainActivityClickHandlers(this);
@@ -50,26 +51,30 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        myAdapter = new MyAdapter(contacts);
+
 
         contactDatabase = ContactDatabase.getInstance(this);
 
         MyViewModel viewModel = new ViewModelProvider(this)
                 .get(MyViewModel.class);
+        Log.v("TAGY", "VIEWMODEL OK");
 
         Contacts c1 = new Contacts("Jack", "jack@gmail.com");
         viewModel.addNewContact(c1);
 
+        Log.v("TAGY", "NEW CONTACT OK");
         viewModel.getAllContacts().observe(this,
                 new Observer<List<Contacts>>() {
                     @Override
                     public void onChanged(List<Contacts> contacts) {
                         for(Contacts c : contacts) {
                             Log.v("TAGY", c.getName());
+                            contactsArrayList.add(c);
                         }
+                        myAdapter.notifyDataSetChanged();
                     }
                 });
-
+        myAdapter = new MyAdapter(contactsArrayList);
         recyclerView.setAdapter(myAdapter);
 
     }

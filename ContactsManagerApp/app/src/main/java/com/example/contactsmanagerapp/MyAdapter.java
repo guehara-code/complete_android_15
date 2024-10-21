@@ -59,7 +59,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ContactViewHolder>
         private ContactsListItemBinding contactListItemBinding;
 
 //        public ContactViewHolder(@NonNull View itemView, ContactsListItemBinding contactListItemBinding) {
-    public ContactViewHolder(ContactsListItemBinding contactListItemBinding) {
+    public ContactViewHolder(@NonNull ContactsListItemBinding contactListItemBinding) {
             super(contactListItemBinding.getRoot());
             this.contactListItemBinding = contactListItemBinding;
         }
