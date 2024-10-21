@@ -4,7 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
+import com.example.contactsmanagerapp.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
+
 public class MainActivityClickHandlers {
+
+
 
     Context context;
 

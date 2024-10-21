@@ -16,6 +16,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ContactViewHolder>
 
     private ArrayList<Contacts> contacts;
 
+    public MyAdapter(ArrayList<Contacts> contacts) {
+        this.contacts = contacts;
+    }
+
     @NonNull
     @Override
     public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
