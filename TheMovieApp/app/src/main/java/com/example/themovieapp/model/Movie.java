@@ -93,7 +93,7 @@ public class Movie {
         this.voteAverage = voteAverage;
     }
 
-   
+
 
 }
 
