@@ -51,4 +51,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
+
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
 }
