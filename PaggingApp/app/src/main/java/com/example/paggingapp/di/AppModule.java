@@ -28,3 +28,5 @@ public class AppModule {
                         .placeholder(R.drawable.ic_image));
     }
 }
+
+
