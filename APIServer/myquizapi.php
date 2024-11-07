@@ -1,8 +1,8 @@
 <?php
 
-$conn = myspli_connect("localhost", "root", "", "my_quiz_db);
+$conn = mysqli_connect("localhost", "root", "", "my_quiz_db", "3306");
 
-$stmt = $conn->prepare("SELECT `question`, `option1`, `option2`, `option3`, `option4`, `correct_option` FROM `math_quiz`);
+$stmt = $conn->prepare("SELECT `question`,`option1`,`option2`,`option3`,`option4`,`correct_option` FROM `math_table`");
 
 // execute query
 
@@ -15,7 +15,7 @@ $stmt->execute();
 $stmt->bind_result($question, $option1, $option2, $option3, $option4, $correct_option);
 
 // Creating an empty array
-$question_array = array();
+$questions_array = array();
 
 // Traversing through all the questions
 while($stmt->fetch()) {
@@ -28,11 +28,11 @@ while($stmt->fetch()) {
     $temp['option4'] = $option4;
     $temp['correct_option'] = $correct_option;
 
-    array_push($question_array, $temp);
+    array_push($questions_array, $temp);
 }
 
 // Display the results in JSON format
-echo json_encode($question_array);
+echo json_encode($questions_array);
 
 
 ?>
