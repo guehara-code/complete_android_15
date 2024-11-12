@@ -27,10 +27,10 @@
         <TextView
             android:id="@+id/txtQuestion"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="100dp"
 
 
-            android:layout_marginTop="333dp"
+            android:layout_marginTop="300dp"
             android:text="Ready for the challenge?"
             android:textColor="@color/black"
 
@@ -43,8 +43,8 @@
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="373dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="450dp"
 
             android:layout_marginBottom="123dp"
             app:layout_constraintBottom_toTopOf="@+id/txtResult"
@@ -100,8 +100,10 @@
             android:text="Next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/txtResult"

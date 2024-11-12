@@ -1,5 +1,7 @@
 package com.example.thequizapp.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -14,9 +16,11 @@ public class QuizViewModel extends ViewModel {
 
     public QuizViewModel() {
         questionListLiveData = repository.getQuestionsFromAPI();
+
     }
 
     public LiveData<QuestionList> getQuestionListLiveData() {
+        Log.v("MyActivity", questionListLiveData.toString());
         return questionListLiveData;
     }
 }

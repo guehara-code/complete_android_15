@@ -45,13 +45,21 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    val lifecycle_version = "2.8.7"
+//    val lifecycle_version = "2.8.7"
+//
+//    implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
+//
+//    implementation("androidx.lifecycle:lifecycle-livedata:$lifecycle_version")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
+//    implementation("com.squareup.retrofit2:retrofit:2.11.0")
 
-    implementation("androidx.lifecycle:lifecycle-livedata:$lifecycle_version")
+//    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation(libs.lifecycle.viewmodel)
 
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation(libs.lifecycle.livedata)
+
+    implementation(libs.retrofit)
+
+    implementation(libs.converter.gson)
 }

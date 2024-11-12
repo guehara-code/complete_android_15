@@ -1,5 +1,7 @@
 package com.example.thequizapp.repository;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -30,6 +32,8 @@ public class QuizRepository {
             @Override
             public void onResponse(Call<QuestionList> call, Response<QuestionList> response) {
                 QuestionList list = response.body();
+                Log.v("MyActivity", "list" );
+                Log.v("MyActivity", list.get(0).getQuestion() );
                 data.setValue(list);
             }
 

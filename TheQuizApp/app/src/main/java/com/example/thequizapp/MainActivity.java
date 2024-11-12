@@ -1,6 +1,7 @@
 package com.example.thequizapp;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,16 +40,21 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        Log.v("MyActivity", "start" );
 
         binding = DataBindingUtil.setContentView(
                 this,
                 R.layout.activity_main
         );
 
+        Log.v("MyActivity", "DataBinding OK");
         result = 0;
         totalQuestions = 0;
 
         quizViewModel = new ViewModelProvider(this).get(QuizViewModel.class);
+        Log.v("MyActivity", "QuizModel OK" );
+
+        DisplayFirstQuestion();
     }
 
     public void DisplayFirstQuestion() {
