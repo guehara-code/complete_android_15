@@ -2,6 +2,9 @@ package com.example.thequizapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
         Log.v("MyActivity", "QuizModel OK" );
 
         DisplayFirstQuestion();
+
+        binding.btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DisplayNextQuestion();
+            }
+        });
     }
 
     public void DisplayFirstQuestion() {
@@ -73,5 +83,61 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    public void DisplayNextQuestion() {
+        int selectedOption = binding.radioGroup.getCheckedRadioButtonId();
+        Log.v("MyActivity", "RadioId=" + selectedOption);
+        if(selectedOption != -1) {
+            Log.v("MyActivity", "result=" + result);
+            RadioButton radioButton = findViewById(selectedOption);
+
+            if((questionList.size() - i) > 0) {
+                totalQuestions = questionList.size();
+                Log.v("MyActivity", "radioTxt=" + radioButton.getText().toString());
+                Log.v("MyActivity", "CorrectAns=" + questionList.get(i).getCorrectOption());
+                if(radioButton.getText().toString().equals(
+                        questionList.get(i).getCorrectOption()
+                )) {
+                    result++;
+                    Log.v("MyActivity", "result=" + result);
+                    binding.txtResult.setText(
+                            "Correct Answers: " + result
+                    );
+                }
+
+                if(i == 0) {
+                    i++;
+                }
+
+                binding.txtQuestion.setText("Question " + (i + 1) + " : " +
+                        questionList.get(i).getQuestion());
+
+                binding.radio1.setText(questionList.get(i).getOption1());
+                binding.radio2.setText(questionList.get(i).getOption2());
+                binding.radio3.setText(questionList.get(i).getOption3());
+                binding.radio4.setText(questionList.get(i).getOption4());
+
+                if(i == (questionList.size() - 1)) {
+                    binding.btnNext.setText("Finish");
+                }
+
+                binding.radioGroup.clearCheck();
+                i++;
+            } else {
+                if(radioButton.getText().toString().equals(
+                        questionList.get(i - 1).getCorrectOption()
+                )) {
+                    result++;
+                    Log.v("MyActivity", "result=" + result);
+                    binding.txtResult.setText("Correct Answers: " + result);
+                }
+            }
+        } else {
+            Toast.makeText(
+                    this,
+                    "You need to make a selection",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
