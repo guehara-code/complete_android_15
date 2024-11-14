@@ -1,5 +1,6 @@
 package com.example.thequizapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -86,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void DisplayNextQuestion() {
+
+        if(binding.btnNext.getText().equals("Finish")) {
+            Intent i = new Intent(MainActivity.this, ResultsActivity.class);
+            startActivity(i);
+            finish();
+        }
+
         int selectedOption = binding.radioGroup.getCheckedRadioButtonId();
         Log.v("MyActivity", "RadioId=" + selectedOption);
         if(selectedOption != -1) {
