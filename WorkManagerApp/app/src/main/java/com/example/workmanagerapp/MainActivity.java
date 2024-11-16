@@ -1,6 +1,7 @@
 package com.example.workmanagerapp;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -8,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,5 +29,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn = findViewById(R.id.btn);
+
+        WorkRequest wr = new OneTimeWorkRequest.Builder(MyWorker.class).build();
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WorkManager.getInstance(
+                        getApplicationContext()).enqueue(wr);
+            }
+        });
     }
 }
