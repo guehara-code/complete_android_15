@@ -28,6 +28,10 @@ public class MyWorker extends Worker {
         for (int i = 0; i < countingLimit; i++) {
             Log.i("TAGY", "Count is: " + i);
         }
-        return Result.success();
+
+        Data dataToSend = new Data.Builder()
+                .putString("msg", "Task Done Successfully").build();
+
+        return Result.success(dataToSend);
     }
 }

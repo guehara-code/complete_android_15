@@ -74,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(MainActivity.this,
                                             "Status: " + workInfo.getState().name(),
                                             Toast.LENGTH_SHORT).show();
+
+                                    if (workInfo.getState().isFinished()) {
+                                        Data data1 = workInfo.getOutputData();
+                                        Toast.makeText(MainActivity.this,
+                                                "" + data1.getString("msg"),
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             }
                         });
