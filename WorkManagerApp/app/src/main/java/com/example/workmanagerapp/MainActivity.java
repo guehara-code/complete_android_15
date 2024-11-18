@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.Observer;
 import androidx.work.Constraints;
+import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
@@ -34,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.btn);
 
+        // Data
+
+        Data data = new Data.Builder()
+                .putInt("max_limit", 500).build();
+
         //Constraints
 
         Constraints constraints = new Constraints
@@ -46,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         WorkRequest wr = new OneTimeWorkRequest
                 .Builder(MyWorker.class)
                 .setConstraints(constraints)
+                .setInputData(data)
                 .build();
 
         btn.setOnClickListener(new View.OnClickListener() {
