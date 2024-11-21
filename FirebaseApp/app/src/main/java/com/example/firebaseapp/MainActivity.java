@@ -30,27 +30,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Log.v("TAG", database.toString());
 
         DatabaseReference myRef = database.getReference("messages");
-        Log.v("TAG", myRef.toString());
-        myRef.setValue("Hello from our Course!");
-        Log.v("TAG", "after write");
 
-//        myRef.setValue("I'm writing data", new DatabaseReference.CompletionListener() {
-//            @Override
-//            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-//                if (error != null) {
-//                    // System.out.println("Data could not be saved " + error.getMessage());
-//                    Log.v("TAG", "Data could not be saved " + error.getMessage());
-//                } else {
-//                    // System.out.println("Data saved successfully.");
-//                    Log.v("TAG", "Data saved successfully.");
-//                }
-//            }
-//
-//        });
+        myRef.setValue("Hello from our Course!");
+        
 
     }
 }
