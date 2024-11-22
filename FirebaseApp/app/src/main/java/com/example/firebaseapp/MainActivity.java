@@ -36,9 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        DatabaseReference myRef = database.getReference("messages");
+        DatabaseReference myRef = database.getReference("Users");
 
-        myRef.setValue("Hello from our Course!");
+        User user1 = new User("Jack", "jack@gmail.com");
+        myRef.setValue(user1);
+
+//        myRef.setValue("Hello from our Course!");
 
         TextView textView = findViewById(R.id.textview);
 
@@ -46,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String newValue = snapshot.getValue(String.class);
-                textView.setText(newValue);
+                User user = snapshot.getValue(User.class);
+                textView.setText("Email: " + user.getEmail());
             }
 
             @Override
