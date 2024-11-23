@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="user"
+            type="com.example.firebaseapp.User"
+            />
+    </data>
+
+<androidx.cardview.widget.CardView
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     app:cardCornerRadius="10dp"
     android:layout_margin="16dp">
 
@@ -16,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="username"
+            android:text="@{user.username}"
             android:id="@+id/textview"
             android:textColor="black"
             android:textSize="24sp"
@@ -28,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textview2"
-            android:text="Phone Number"
+            android:text="@{user.phoneNumber}"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Group"
+            android:text="@{user.groupUser}"
             android:textSize="16sp"
             android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -50,3 +63,5 @@
 
 
 </androidx.cardview.widget.CardView>
+
+</layout>
