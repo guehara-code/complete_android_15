@@ -1,10 +1,12 @@
 package com.example.firebaseapp;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.firebaseapp.databinding.ItemCardBinding;
@@ -24,17 +26,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.UserViewHolder> {
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+
+        ItemCardBinding binding = DataBindingUtil
+                .inflate(
+                        LayoutInflater.from(parent.getContext()),
+                        R.layout.item_card,
+                        parent,
+                        false
+                );
+
+        return new UserViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-
+        User currentUser = userArrayList.get(position);
+        holder.itemCardBinding.setUser(currentUser);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+
+        return userArrayList.size();
     }
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
