@@ -11,7 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.firebaseapp.databinding.ActivityMainBinding;
 import com.google.firebase.Firebase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +25,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ArrayList<User> users;
+    private RecyclerView recyclerView;
+    private MyAdapter userAdapter;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,30 +45,20 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+      binding = DataBindingUtil.setContentView(
+              this,
+              R.layout.activity_main
+      );
 
-        DatabaseReference myRef = database.getReference("Users");
+      recyclerView = binding.recyclerView;
 
-        User user1 = new User("Jack", "jack@gmail.com");
-        myRef.setValue(user1);
+      userAdapter = new MyAdapter(this, users);
 
-//        myRef.setValue("Hello from our Course!");
+      recyclerView.setAdapter(userAdapter);
 
-        TextView textView = findViewById(R.id.textview);
+      recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                textView.setText("Email: " + user.getEmail());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+      userAdapter.notifyDataSetChanged();
 
 
     }
