@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter userAdapter;
     private ActivityMainBinding binding;
 
+    // Firebase
+    DatabaseReference databaseReference;
+    FirebaseDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,15 +54,43 @@ public class MainActivity extends AppCompatActivity {
               R.layout.activity_main
       );
 
+      database = FirebaseDatabase.getInstance();
+      databaseReference = database.getReference("Users");
+
+
       recyclerView = binding.recyclerView;
 
-      userAdapter = new MyAdapter(this, users);
 
-      recyclerView.setAdapter(userAdapter);
+
+
 
       recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-      userAdapter.notifyDataSetChanged();
+      // Fetch the data from firebase into recyclerView
+      databaseReference.addValueEventListener(new ValueEventListener() {
+          @Override
+          public void onDataChange(@NonNull DataSnapshot snapshot) {
+              for(DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                  User user = dataSnapshot.getValue(User.class);
+                  users.add(user);
+              }
+
+              userAdapter.notifyDataSetChanged();
+          }
+
+
+          @Override
+          public void onCancelled(@NonNull DatabaseError error) {
+
+          }
+      });
+
+      users = new ArrayList<>();
+      userAdapter = new MyAdapter(this, users);
+      recyclerView.setAdapter(userAdapter);
+
+
+
 
 
     }
