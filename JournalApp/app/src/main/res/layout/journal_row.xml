@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/jounal_throught_list"
+            android:id="@+id/journal_thought_list"
             android:padding="10dp"
             android:text="Description..."
             android:textSize="18sp"
