@@ -51,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
         createBTN = findViewById(R.id.acc_signUp_btn);
         password_create = findViewById(R.id.password_create);
         email_create = findViewById(R.id.email_create);
+        username_create = findViewById(R.id.username_create_ET);
 
         // Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance();
@@ -110,7 +111,7 @@ public class SignUpActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(SignUpActivity.this,
-                                        "Account is created succesfully",
+                                        "Account is created successfully",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
