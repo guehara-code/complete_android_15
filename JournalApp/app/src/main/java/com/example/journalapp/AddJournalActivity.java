@@ -1,5 +1,6 @@
 package com.example.journalapp;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,7 +8,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import androidx.activity.ActivityViewModelLazyKt;
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -43,6 +49,9 @@ public class AddJournalActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser user;
+
+    // Using Activity Result Launcher
+    ActivityResultLauncher<String> mTakePhoto;
 
 
     @Override
@@ -80,14 +89,25 @@ public class AddJournalActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SaveJournal();
+                //SaveJournal();
             }
         });
+
+        mTakePhoto = registerForActivityResult(
+                new ActivityResultContracts.GetContent(),
+                new ActivityResultCallback<Uri>() {
+                    @Override
+                    public void onActivityResult(Uri result) {
+                        imageView.setImageURI(result);
+                    }
+                }
+        );
 
         addPhotoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // Getting Image from gallery
+                mTakePhoto.launch("mage/*");
             }
         });
 

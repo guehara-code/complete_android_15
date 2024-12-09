@@ -17,4 +17,15 @@
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent"/>
 
+   <com.google.android.material.floatingactionbutton.FloatingActionButton
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/fab"
+       android:background="@android:drawable/ic_input_add"
+       android:backgroundTint="#99cc00"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
