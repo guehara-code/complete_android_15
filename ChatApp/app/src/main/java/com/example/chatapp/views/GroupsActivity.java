@@ -23,4 +23,5 @@ public class GroupsActivity extends AppCompatActivity {
             return insets;
         });
     }
+
 }
