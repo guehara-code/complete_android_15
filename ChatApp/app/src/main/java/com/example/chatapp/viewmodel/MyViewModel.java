@@ -12,11 +12,12 @@ public class MyViewModel extends AndroidViewModel {
 
     Repository repository;
 
-
     public MyViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository();
     }
+
+
 
     // Auth
     public void signUpAnonymousUser() {
