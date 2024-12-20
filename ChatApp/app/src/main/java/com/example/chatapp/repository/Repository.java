@@ -90,4 +90,9 @@ public class Repository {
         });
         return chatGroupMutableLiveData;
     }
+
+    // Creating a new group
+    public void createNewChatGroup(String groupName) {
+        reference.setValue(groupName);
+    }
 }
