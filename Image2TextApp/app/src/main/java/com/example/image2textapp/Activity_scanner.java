@@ -3,6 +3,8 @@ package com.example.image2textapp;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -20,6 +22,15 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.text.Text;
+import com.google.mlkit.vision.text.TextRecognition;
+import com.google.mlkit.vision.text.TextRecognizer;
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
 public class Activity_scanner extends AppCompatActivity {
 
@@ -117,6 +128,41 @@ public class Activity_scanner extends AppCompatActivity {
     }
 
     private void DetectText() {
+        InputImage image = InputImage.fromBitmap(imageBitmap, 0);
+        TextRecognizer recognizer = TextRecognition.getClient(
+                TextRecognizerOptions.DEFAULT_OPTIONS
+        );
 
+        Task<Text> result = recognizer.process(image).addOnSuccessListener(new OnSuccessListener<Text>() {
+            @Override
+            public void onSuccess(Text text) {
+                StringBuilder result = new StringBuilder();
+
+                for (Text.TextBlock block : text.getTextBlocks()) {
+                    String blockText = block.getText();
+                    Point[] blockCornerPoint = block.getCornerPoints();
+                    Rect blockFrame = block.getBoundingBox();
+
+                    for (Text.Line line : block.getLines()) {
+                        String lineText  = line.getText();
+                        Point[] lineCornerPoint = line.getCornerPoints();
+                        Rect lineRect = line.getBoundingBox();
+
+                        for(Text.Element element : line.getElements()) {
+                            String elementText = element.getText();
+                            result.append(elementText);
+                        }
+
+                        resultIV.setText(blockText);
+                    }
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),
+                        "Failed to Detect Text from Image...", Toast.LENGTH_SHORT).show();
+            }
+        })
     }
 }
