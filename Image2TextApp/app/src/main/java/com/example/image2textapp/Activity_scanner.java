@@ -163,6 +163,6 @@ public class Activity_scanner extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         "Failed to Detect Text from Image...", Toast.LENGTH_SHORT).show();
             }
-        })
+        });
     }
 }
