@@ -1,6 +1,8 @@
 package com.example.translator;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -11,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.mlkit.nl.translate.TranslateLanguage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     // Permissions
     private static final int REQUEST_CODE = 1;
 
-    int languageCode, fromLanguage, toLanguage = 0;
+    String languageCode, fromLanguageCode, toLanguageCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +56,54 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.button);
         translatedTV = findViewById(R.id.idTvTranslatedTV);
 
+        fromSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                fromLanguageCode = GetLanguageCode(fromLanguages[i]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
+    private String GetLanguageCode(String language) {
+        String LanguageCode;
+
+        switch (language) {
+            case "English":
+                LanguageCode = TranslateLanguage.ENGLISH;
+                break;
+            case "Afrikaans":
+                LanguageCode = TranslateLanguage.AFRIKAANS;
+                break;
+            case "Arabic":
+                LanguageCode = TranslateLanguage.ARABIC;
+                break;
+            case "Belarusian":
+                LanguageCode = TranslateLanguage.BELARUSIAN;
+                break;
+            case "Bengali":
+                LanguageCode = TranslateLanguage.BENGALI;
+                break;
+            case "Catalan":
+                LanguageCode = TranslateLanguage.CATALAN;
+                break;
+            case "Hindi":
+                LanguageCode = TranslateLanguage.HINDI;
+                break;
+            case "Urdu":
+                LanguageCode = TranslateLanguage.URDU;
+                break;
+            default:
+                LanguageCode = "";
+        }
+
+        return languageCode;
+    }
 
 
 }
