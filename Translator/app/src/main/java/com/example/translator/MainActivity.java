@@ -3,6 +3,7 @@ package com.example.translator;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -15,6 +16,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.mlkit.nl.translate.TranslateLanguage;
+
+import java.sql.Array;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.button);
         translatedTV = findViewById(R.id.idTvTranslatedTV);
 
+
+        // Spinner 1
         fromSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -67,6 +72,31 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        ArrayAdapter fromAdapter = new ArrayAdapter(this,
+                R.layout.spinner_item, fromLanguages);
+        fromAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        fromSpinner.setAdapter(fromAdapter);
+
+        // Spinner 2
+        toSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                toLanguageCode = GetLanguageCode(toLanguages[i]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ArrayAdapter toAdapter = new ArrayAdapter(this,
+                R.layout.spinner_item, toLanguages);
+        toAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        toSpinner.setAdapter(toAdapter);
+
 
     }
 
