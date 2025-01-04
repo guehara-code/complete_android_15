@@ -111,11 +111,13 @@ public class MainActivity extends AppCompatActivity {
                 translatedTV.setText("");
                 if(sourceEdt.getText().toString().isEmpty()) {
                     Toast.makeText(MainActivity.this, "Please enter your text", Toast.LENGTH_SHORT).show();
-                } else if(fromLanguageCode.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please select source language", Toast.LENGTH_SHORT).show();
-                } else if(toLanguageCode.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please select the target language", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+//                else if(fromLanguageCode.isEmpty()) {
+//                    Toast.makeText(MainActivity.this, "Please select source language", Toast.LENGTH_SHORT).show();
+//                } else if(toLanguageCode.isEmpty()) {
+//                    Toast.makeText(MainActivity.this, "Please select the target language", Toast.LENGTH_SHORT).show();
+//                }
+                else {
                     TranslateText(fromLanguageCode, toLanguageCode, sourceEdt.getText().toString());
                 }
 
