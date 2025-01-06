@@ -1,7 +1,9 @@
 package com.example.ocr;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +24,8 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final int PICK_IMAGE = 123;
 
     // Widgets
     ImageView imageView;
@@ -79,6 +83,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void OpenGallery() {
 
+        Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        getIntent.setType("image/");
+
+        Intent pickIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        pickIntent.setType("image/");
+
+        Intent chooserIntent = Intent.createChooser(getIntent,"Select Image");
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{ pickIntent });
+
+        startActivityForResult(chooserIntent, PICK_IMAGE);
 
     }
 }
