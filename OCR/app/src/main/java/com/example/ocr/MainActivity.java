@@ -9,18 +9,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
+import java.io.IOException;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -95,4 +104,48 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(chooserIntent, PICK_IMAGE);
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE) {
+            if (data != null) {
+                byte[] byteArray = new byte[0];
+                String filePath = null;
+
+                try {
+                    inputImage = InputImage.fromFilePath(this, data.getData());
+                    Bitmap resultUri = inputImage.getBitmapInternal();
+
+                    Glide.with(MainActivity.this)
+                            .load(resultUri)
+                            .into(imageView);
+
+                    // Process the Image
+                    Task<Text> result =
+                            recognizer.process(inputImage)
+                                    .addOnSuccessListener(new OnSuccessListener<Text>() {
+                                        @Override
+                                        public void onSuccess(Text text) {
+                                            ProcessTextBlock(text);
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT)
+                                        }
+                                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void ProcessTextBlock(Text text) {
+    }
+
+
 }
