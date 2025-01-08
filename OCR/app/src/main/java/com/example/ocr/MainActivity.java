@@ -2,6 +2,8 @@ package com.example.ocr;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
@@ -134,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT)
+                                            Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT);
                                         }
                                     });
                 } catch (IOException e) {
@@ -145,7 +147,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void ProcessTextBlock(Text text) {
+
+        // Start ML kit - process text block
+
+        String resultText = text.getText();
+        for (Text.TextBlock block : text.getTextBlocks()) {
+
+            String blockText = block.getText();
+            textView.append("\n");
+            Point[] blockCornerPoints = block.getCornerPoints();
+            Rect blockFrame = block.getBoundingBox();
+
+            for (Text.Line line : block.getLines()) {
+                String lineText = line.getText();
+
+                Point[] lineCornerPoints = line.getCornerPoints();
+                Rect lineFrame = line.getBoundingBox();
+
+                for(Text.Element element : line.getElements()) {
+                    textView.append(" ");
+                    String elementText = element.getText();
+                    textView.append(elementText);
+
+                    Point[] elementCornerPoints = element.getCornerPoints();
+                    Rect elementFrame = element.getBoundingBox();
+                }
+            }
+        }
+
     }
 
+    @Override
+    protected void onPause() {
+        if (!textToSpeech.isSpeaking()) {
+            super.onPause();
+        }
 
+        super.onPause();
+    }
 }
