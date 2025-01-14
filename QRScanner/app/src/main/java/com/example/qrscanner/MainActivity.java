@@ -1,9 +1,12 @@
 package com.example.qrscanner;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Size;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -11,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.ImageCapture;
+import androidx.camera.core.ImageProxy;
 import androidx.camera.core.Preview;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
@@ -21,8 +25,18 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.mlkit.vision.barcode.BarcodeScanner;
+import com.google.mlkit.vision.barcode.BarcodeScannerOptions;
+import com.google.mlkit.vision.barcode.BarcodeScanning;
+import com.google.mlkit.vision.barcode.common.Barcode;
+import com.google.mlkit.vision.common.InputImage;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -120,11 +134,60 @@ public class MainActivity extends AppCompatActivity {
                 imageCapture, imageAnalysis);
     }
 
-    public class MyImageAnalyzer {
+    public class MyImageAnalyzer implements ImageAnalysis.Analyzer {
+
+        private FragmentManager fragmentManager;
+        private BottomDialog bottomDialog;
 
         public MyImageAnalyzer(FragmentManager supportFragmentManager) {
 
+            this.fragmentManager = supportFragmentManager;
+            bottomDialog = new BottomDialog();
         }
+
+        @Override
+        public void analyze(@NonNull ImageProxy image) {
+            ScanBarCode(image);
+        }
+    }
+
+    private void ScanBarCode(ImageProxy image) {
+
+        @SuppressLint("UnsafeOptInUsageError") Image image1 = image.getImage();
+
+        assert image1 != null;
+        InputImage inputImage = InputImage.fromMediaImage(image1,
+                image.getImageInfo().getRotationDegrees());
+
+        BarcodeScannerOptions scannerOptions =
+                new BarcodeScannerOptions.Builder()
+                        .setBarcodeFormats(
+                                Barcode.FORMAT_QR_CODE,
+                                Barcode.FORMAT_AZTEC)
+                        .build();
+
+        BarcodeScanner scanner = BarcodeScanning.getClient(scannerOptions);
+        Task<List<Barcode>> result = scanner.process(inputImage)
+                .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
+                    @Override
+                    public void onSuccess(List<Barcode> barcodes) {
+                        ReaderBarCodeData(barcodes);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this,
+                                "Failed to Read Code", Toast.LENGTH_SHORT);
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<List<Barcode>>() {
+                    @Override
+                    public void onComplete(@NonNull Task<List<Barcode>> task) {
+                        image.close();
+                    }
+                });
+    }
+
+    private void ReaderBarCodeData(List<Barcode> barcodes) {
 
     }
 

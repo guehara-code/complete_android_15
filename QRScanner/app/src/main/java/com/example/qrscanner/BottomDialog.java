@@ -19,7 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Bottom_dialog extends BottomSheetDialogFragment {
+public class BottomDialog extends BottomSheetDialogFragment {
 
     private TextView title, link, btn_visit;
     private ImageView close;
