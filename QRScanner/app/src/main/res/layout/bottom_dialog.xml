@@ -51,7 +51,7 @@
         android:paddingTop="4dp"
         android:text="Visit Link"
         android:textAlignment="center"
-        android:textColor="teal_700"
+        android:textColor="@color/teal_700"
         tools:ignore="MissingConstraints"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
