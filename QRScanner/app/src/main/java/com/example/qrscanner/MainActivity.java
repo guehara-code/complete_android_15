@@ -3,6 +3,8 @@ package com.example.qrscanner;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Size;
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         cameraExecutor = Executors.newSingleThreadExecutor();
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
 
-        analyser = new MyImageAnalyzer(getSupportFragmentManager());
+        analyzer = new MyImageAnalyzer(getSupportFragmentManager());
 
         // Camera Provider Future
         cameraProviderFuture.addListener(new Runnable() {
@@ -149,47 +151,72 @@ public class MainActivity extends AppCompatActivity {
         public void analyze(@NonNull ImageProxy image) {
             ScanBarCode(image);
         }
+
+
+        private void ScanBarCode(ImageProxy image) {
+
+            @SuppressLint("UnsafeOptInUsageError") Image image1 = image.getImage();
+
+            assert image1 != null;
+            InputImage inputImage = InputImage.fromMediaImage(image1,
+                    image.getImageInfo().getRotationDegrees());
+
+            BarcodeScannerOptions scannerOptions =
+                    new BarcodeScannerOptions.Builder()
+                            .setBarcodeFormats(
+                                    Barcode.FORMAT_QR_CODE,
+                                    Barcode.FORMAT_AZTEC)
+                            .build();
+
+            BarcodeScanner scanner = BarcodeScanning.getClient(scannerOptions);
+            Task<List<Barcode>> result = scanner.process(inputImage)
+                    .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
+                        @Override
+                        public void onSuccess(List<Barcode> barcodes) {
+                            ReaderBarCodeData(barcodes);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this,
+                                    "Failed to Read Code", Toast.LENGTH_SHORT);
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<List<Barcode>>() {
+                        @Override
+                        public void onComplete(@NonNull Task<List<Barcode>> task) {
+                            image.close();
+                        }
+                    });
+        }
+
+        private void ReaderBarCodeData(List<Barcode> barcodes) {
+            for (Barcode barcode : barcodes) {
+                Rect bounds = barcode.getBoundingBox();
+                Point[] corners = barcode.getCornerPoints();
+
+                String rawValues = barcode.getRawValue();
+
+                int valueType = barcode.getValueType();
+
+                switch (valueType) {
+                    case Barcode.TYPE_WIFI:
+                        String ssid = barcode.getWifi().getSsid();
+                        String password = barcode.getWifi().getPassword();
+                        int type = barcode.getWifi().getEncryptionType();
+                        break;
+                    case Barcode.TYPE_URL:
+                        if (bottomDialog.isAdded()) {
+                            bottomDialog.show(fragmentManager, "");
+                        }
+                        bottomDialog.fetchURL(barcode.getUrl().getUrl());
+                        String title = barcode.getUrl().getTitle();
+                        String url = barcode.getUrl().getUrl();
+                        break;
+
+                }
+
+            }
+        }
     }
-
-    private void ScanBarCode(ImageProxy image) {
-
-        @SuppressLint("UnsafeOptInUsageError") Image image1 = image.getImage();
-
-        assert image1 != null;
-        InputImage inputImage = InputImage.fromMediaImage(image1,
-                image.getImageInfo().getRotationDegrees());
-
-        BarcodeScannerOptions scannerOptions =
-                new BarcodeScannerOptions.Builder()
-                        .setBarcodeFormats(
-                                Barcode.FORMAT_QR_CODE,
-                                Barcode.FORMAT_AZTEC)
-                        .build();
-
-        BarcodeScanner scanner = BarcodeScanning.getClient(scannerOptions);
-        Task<List<Barcode>> result = scanner.process(inputImage)
-                .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
-                    @Override
-                    public void onSuccess(List<Barcode> barcodes) {
-                        ReaderBarCodeData(barcodes);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this,
-                                "Failed to Read Code", Toast.LENGTH_SHORT);
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<List<Barcode>>() {
-                    @Override
-                    public void onComplete(@NonNull Task<List<Barcode>> task) {
-                        image.close();
-                    }
-                });
-    }
-
-    private void ReaderBarCodeData(List<Barcode> barcodes) {
-
-    }
-
 
 }
