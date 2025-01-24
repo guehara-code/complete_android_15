@@ -11,7 +11,8 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <TextView
             android:id="@+id/dialog"
@@ -22,9 +23,7 @@
             android:text="ML Face Detection"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+
             />
 
         <Button
@@ -37,9 +36,7 @@
             android:text="OK"
             android:layout_below="@+id/dialog"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottonOf="@id/dialog"
+
 
             />
 
