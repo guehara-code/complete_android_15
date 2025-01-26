@@ -20,6 +20,7 @@
         android:backgroundTint="@color/black"
         android:backgroundTintMode="add"
         android:text="Get Started"
+        android:textColor="@color/design_default_color_on_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

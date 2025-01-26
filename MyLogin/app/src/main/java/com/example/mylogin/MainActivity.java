@@ -1,6 +1,10 @@
 package com.example.mylogin;
 
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +13,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Widgets
+    Button btn;
+    TextView t1, t2;
+
+    Animation animate_btn, animate_txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +30,19 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        btn = findViewById(R.id.button);
+        t1 = findViewById(R.id.textView);
+        t2 = findViewById(R.id.textView2);
+
+        // Animation
+
+        animate_btn = AnimationUtils.loadAnimation(this, R.anim.animate_btn);
+        animate_txt = AnimationUtils.loadAnimation(this, R.anim.animate_texts);
+
+        btn.setAnimation(animate_btn);
+        t1.setAnimation(animate_txt);
+        t2.setAnimation(animate_txt);
+
     }
 }
