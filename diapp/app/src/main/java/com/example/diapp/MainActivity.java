@@ -8,6 +8,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.diapp.di.Engine;
+import com.example.diapp.di.Plane;
+import com.example.diapp.di.PlaneType;
+import com.example.diapp.di.Wings;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,5 +25,13 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Engine e = new Engine();
+        Wings w = new Wings();
+        PlaneType t = new PlaneType();
+
+        Plane p = new Plane(e, w, t);
+        p.TakeOff();
+
     }
 }
