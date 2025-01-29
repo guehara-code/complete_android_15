@@ -1,4 +1,4 @@
-package com.example.patternsapp;
+package com.example.patternsapp.util;
 
 public class MyModel {
 
