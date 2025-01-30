@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity implements AppView {
     TextView textView;
 
     // Linking Activity with presenter
-    AppPresenter appPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,22 +36,13 @@ public class MainActivity extends AppCompatActivity implements AppView {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                appPresenter.getAppName();
+
             }
         });
 
-        // Instantiating the presenter
-        appPresenter = new AppPresenter(this);
+
     }
 
-//    public MyModel GetAppFromModel() {
-//        return new MyModel("Master Coding App", 9000, 4);
-//    }
-//
-//    public  void DisplayAppinText(View view) {
-//        textView.setText(GetAppFromModel().getAppName() + " Downloads " + GetAppFromModel().getAppDownloads());
-//
-//    }
 
     @Override
     public void onGetAppName(String string) {
