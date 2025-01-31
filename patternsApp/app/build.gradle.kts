@@ -46,4 +46,6 @@ dependencies {
 
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata:2.8.7")
+
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 }
