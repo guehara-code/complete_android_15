@@ -16,10 +16,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.patternsapp.R;
+import com.example.patternsapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn;
-    TextView textView;
+//    Button btn;
+//    TextView textView;
 
    AppViewModel appViewModel;
 
@@ -34,22 +35,34 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        textView = findViewById(R.id.textView);
-        btn = findViewById(R.id.button);
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 appViewModel.getAppName();
             }
         });
 
+//        textView = findViewById(R.id.textView);
+//        btn = findViewById(R.id.button);
+
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                appViewModel.getAppName();
+//            }
+//        });
+
         appViewModel = new ViewModelProvider(this).get(AppViewModel.class);
 
         appViewModel.mutableLiveData.observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                textView.setText(s);
+
+                binding.textView.setText(s);
             }
         });
 
