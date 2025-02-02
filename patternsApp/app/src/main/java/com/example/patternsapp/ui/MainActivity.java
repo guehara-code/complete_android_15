@@ -39,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        binding.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                appViewModel.getAppName();
-            }
-        });
+//        binding.button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                appViewModel.getAppName();
+//            }
+//        });
 
 //        textView = findViewById(R.id.textView);
 //        btn = findViewById(R.id.button);
@@ -58,13 +58,17 @@ public class MainActivity extends AppCompatActivity {
 
         appViewModel = new ViewModelProvider(this).get(AppViewModel.class);
 
-        appViewModel.mutableLiveData.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
+//        appViewModel.mutableLiveData.observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(String s) {
+//
+//                binding.textView.setText(s);
+//            }
+//        });
 
-                binding.textView.setText(s);
-            }
-        });
+        // view binding with textView will do the job of observing
+        binding.setViewModel(appViewModel);
+        binding.setLifecycleOwner(this);
 
     }
 

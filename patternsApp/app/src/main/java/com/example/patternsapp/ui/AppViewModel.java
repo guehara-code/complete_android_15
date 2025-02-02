@@ -8,7 +8,7 @@ import com.example.patternsapp.util.MyModel;
 
 public class AppViewModel extends ViewModel {
 
-    MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
 
     private MyModel getAppFromDatabase() {
 
