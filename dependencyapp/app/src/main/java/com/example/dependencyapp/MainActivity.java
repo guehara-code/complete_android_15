@@ -20,5 +20,20 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Dependency Injection
+
+        // Creating a mobile with constructor injection
+
+        Battery battery = new Battery(100);
+        MemoryCard memoryCard = new MemoryCard(1024);
+        Processor processor = new Processor("Intel");
+        CPU cpu = new CPU(processor);
+
+        Mobile mobile = new Mobile(battery, memoryCard, cpu);
+        mobile.printMobileSpecs();
     }
+
+
+
 }
