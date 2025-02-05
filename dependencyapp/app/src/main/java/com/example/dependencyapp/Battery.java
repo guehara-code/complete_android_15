@@ -10,4 +10,8 @@ public class Battery {
     public int getPowerPercentage() {
         return powerPercentage;
     }
+
+    public void setPowerPercentage(int powerPercentage) {
+        this.powerPercentage = powerPercentage;
+    }
 }

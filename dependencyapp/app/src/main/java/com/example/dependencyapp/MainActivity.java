@@ -32,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
         Mobile mobile = new Mobile(battery, memoryCard, cpu);
         mobile.printMobileSpecs();
+
+
+        // Method Injection
+        mobile.battery.setPowerPercentage(90);
+        mobile.printMobileSpecs();
     }
 
 
