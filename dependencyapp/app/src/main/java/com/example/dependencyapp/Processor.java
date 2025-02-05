@@ -1,7 +1,7 @@
 package com.example.dependencyapp;
 
 public class Processor {
-    String processorType;
+    public String processorType;
 
     public Processor(String processorType) {
         this.processorType = processorType;

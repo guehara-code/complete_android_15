@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         // Method Injection
         mobile.battery.setPowerPercentage(90);
         mobile.printMobileSpecs();
+
+        // Field Injection
+        processor.processorType = "AMD";
+        mobile.printMobileSpecs();
     }
 
 
