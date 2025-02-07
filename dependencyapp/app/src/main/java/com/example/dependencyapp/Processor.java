@@ -1,13 +1,16 @@
 package com.example.dependencyapp;
 
+import javax.inject.Inject;
+
 public class Processor {
-    public String processorType;
 
-    public Processor(String processorType) {
-        this.processorType = processorType;
+
+    @Inject
+    public Processor() {
+
     }
 
-    public String getProcessorType() {
-        return processorType;
-    }
+//    public String getProcessorType() {
+//        return processorType;
+//    }
 }

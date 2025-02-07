@@ -1,13 +1,16 @@
 package com.example.dependencyapp;
 
+import javax.inject.Inject;
+
 public class MemoryCard {
-    int sizeMemory;
+//    int sizeMemory;
 
-    public MemoryCard(int sizeMemory) {
-        this.sizeMemory = sizeMemory;
+    @Inject
+    public MemoryCard() {
+//        this.sizeMemory = sizeMemory;
     }
 
-    public int getSizeMemory() {
-        return sizeMemory;
-    }
+//    public int getSizeMemory() {
+//        return sizeMemory;
+//    }
 }

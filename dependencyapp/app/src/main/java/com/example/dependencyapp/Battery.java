@@ -1,17 +1,21 @@
 package com.example.dependencyapp;
 
+
+import javax.inject.Inject;
+
 public class Battery {
     int powerPercentage;
 
-    public Battery(int powerPercentage) {
-        this.powerPercentage = powerPercentage;
+    @Inject
+    public Battery() {
+//        this.powerPercentage = powerPercentage;
     }
 
-    public int getPowerPercentage() {
-        return powerPercentage;
-    }
-
-    public void setPowerPercentage(int powerPercentage) {
-        this.powerPercentage = powerPercentage;
-    }
+//    public int getPowerPercentage() {
+//        return powerPercentage;
+//    }
+//
+//    public void setPowerPercentage(int powerPercentage) {
+//        this.powerPercentage = powerPercentage;
+//    }
 }
