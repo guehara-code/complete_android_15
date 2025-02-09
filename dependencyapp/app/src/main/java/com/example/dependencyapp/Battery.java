@@ -1,19 +1,7 @@
 package com.example.dependencyapp;
 
 
-public class Battery {
-    int powerPercentage;
+public interface Battery {
 
-
-    public Battery() {
-//        this.powerPercentage = powerPercentage;
-    }
-
-//    public int getPowerPercentage() {
-//        return powerPercentage;
-//    }
-//
-//    public void setPowerPercentage(int powerPercentage) {
-//        this.powerPercentage = powerPercentage;
-//    }
+    void showType();
 }

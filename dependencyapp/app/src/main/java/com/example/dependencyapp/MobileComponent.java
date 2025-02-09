@@ -2,7 +2,7 @@ package com.example.dependencyapp;
 
 import dagger.Component;
 
-@Component(modules = BatteryModule.class)
+@Component(modules = NickelBatteryModule.class)
 public interface MobileComponent {
     Mobile getMobile();
 

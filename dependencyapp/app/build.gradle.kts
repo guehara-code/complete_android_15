@@ -41,6 +41,6 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation(libs.dagger)
-    annotationProcessor(libs.dagger.compiler)
+    implementation("com.google.dagger:dagger:2.41")
+    annotationProcessor("com.google.dagger:dagger-compiler:2.41")
 }
