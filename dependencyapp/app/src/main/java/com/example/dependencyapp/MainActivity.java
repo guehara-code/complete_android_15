@@ -1,6 +1,7 @@
 package com.example.dependencyapp;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +9,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import javax.inject.Inject;
+
 public class MainActivity extends AppCompatActivity {
+
+    @Inject
+    Mobile mobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +48,14 @@ public class MainActivity extends AppCompatActivity {
 //        processor.processorType = "AMD";
 //        mobile.printMobileSpecs();
 
-        Mobile mobile;
-        MobileComponent mobileComponent = DaggerMobileComponent.create();
+//        Mobile mobile;
+//        MobileComponent mobileComponent = DaggerMobileComponent.create();
+//
+//        mobile = mobileComponent.getMobile();
 
-        mobile = mobileComponent.getMobile();
-        mobile.ringNow();
+        App.getApp().getMobileComponent().getMobile();
+//        Log.v("MSG", mobile.toString());
+//        mobile.ringNow();
 
     }
 
