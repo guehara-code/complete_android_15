@@ -41,4 +41,31 @@ fun main() {
     // letters, digits, symbols or special characters
     var myChar : Char = '\n'
 
+    // Arithmetic Operators: +-*/%
+
+    var result: Int = 5 + 3
+    println("The result = " + result)
+
+    result = 5 - 3
+    println("The result = " + result)
+
+    result = 5 * 3
+    println("The result = " + result)
+
+    result = 6 / 3
+    println("The result = " + result)
+
+    result = 5 % 3     // remainder or division
+    println("The result = " + result)
+
+    // Logical Operators: && || !
+    var result2 : Boolean = true && true
+    println("The result2 = " + result2)
+
+    result2 = true || false
+    println("The result2 = " + result2)
+
+    result2 = !true
+    println("The result2 = " + result2)
+
 }
