@@ -68,4 +68,46 @@ fun main() {
     result2 = !true
     println("The result2 = " + result2)
 
+    // Strings
+    val text1 : String = "Hello My Friends"
+    val text2 : String = " Welcome Back!"
+
+    // String concat
+    val text3 = text1 + text2
+
+    println("text3 = " + text3)
+
+    // String templates
+    val name = "Jack"
+    val age = 30
+    val info = "My name is $name and I am $age years old"
+
+    println(info)
+
+    // String interpolation
+    val x = 5
+    val y = 3
+    val result3 = "The sum of $x and $y is ${x + y}"
+
+    println(result3)
+
+    // String functions and properties
+    val text = "Welcome to our course"
+    val length = text.length
+    println("the length of text is: " + length)
+
+    val subText = text.substring(0, 7)
+    println("the substring is " + subText)
+
+    // String comparison
+    val str1 = "Hello"
+    val str2 = "Hello"
+    val comparisonResult = str1.equals(str2)
+    println("String comparison result: " + comparisonResult)
+
+    // String Literals
+    val newLineText = "This is the first line \nThis is the second line"
+    println(newLineText)
+
+
 }
