@@ -109,5 +109,30 @@ fun main() {
     val newLineText = "This is the first line \nThis is the second line"
     println(newLineText)
 
+    // if statements
+    val theAge = 30
+    if (age > 18) {
+        println("You are an adult")
+    }
+
+    val score = 85
+    if (score >= 60) {
+        println("Pass")
+    } else {
+        println("Fail")
+    }
+
+    // when expressions
+    val day = 4
+    when (day) {
+        1 -> println("Monday")
+        2 -> println("Tuesday")
+        3 -> println("Wednesday")
+        else -> println("Unknown day")
+    }
+    
+
+
+
 
 }
