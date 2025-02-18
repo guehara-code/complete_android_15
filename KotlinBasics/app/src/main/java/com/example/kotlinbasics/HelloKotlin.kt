@@ -130,9 +130,28 @@ fun main() {
         3 -> println("Wednesday")
         else -> println("Unknown day")
     }
-    
 
+    // for loops
 
+    for (i in 1..5) {
+        println(i)
+    }
+
+    // while loops
+
+    var count = 0
+    while (count < 5) {
+        println("Count: $count")
+        count++
+    }
+
+    // do-while loops
+
+    var x1 = 1
+    do {
+        println("This is will be printed at least once.")
+        x1++
+    } while (x1 < 0)
 
 
 }
