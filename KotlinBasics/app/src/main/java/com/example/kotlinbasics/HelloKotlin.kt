@@ -153,5 +153,23 @@ fun main() {
         x1++
     } while (x1 < 0)
 
+    // break statement
+
+    for(i in 1..10) {
+        if(i == 5) {
+            break
+        }
+        println(i)
+
+    }
+
+    for(i in 1..10) {
+        if((i % 2) == 0) {
+            continue
+        }
+        println(i)
+
+    }
+
 
 }
