@@ -171,5 +171,24 @@ fun main() {
 
     }
 
+    // Arrays
+
+    val osNames = arrayOf("Windows", "Android", "MacOS", "Linux")
+
+    val firstElement = osNames[0]
+    println(firstElement)
+
+    osNames[1] = "iOS"
+    println(osNames[1])
+
+    val size = osNames.size
+    println("The size of this array: $size")
+
+    for (name in osNames) {
+        println(name)
+    }
+
+    osNames.forEach { name -> println(name) }
+
 
 }
