@@ -190,5 +190,19 @@ fun main() {
 
     osNames.forEach { name -> println(name) }
 
+    // Ranges
+
+    val range = 1..5
+
+    val range2 = 1 until 5
+
+    for ( i in range) {
+        println(i)
+    }
+
+    for ( i in range2) {
+        println(i)
+    }
+
 
 }
