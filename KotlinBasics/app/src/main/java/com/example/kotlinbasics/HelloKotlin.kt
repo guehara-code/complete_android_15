@@ -204,5 +204,13 @@ fun main() {
         println(i)
     }
 
+    // Functions
 
+    sayHello("Jack", "30")
+
+}
+
+
+fun sayHello(name : String, age : String = "Not Specified") {
+    println("Hello $name, your age is $age")
 }
