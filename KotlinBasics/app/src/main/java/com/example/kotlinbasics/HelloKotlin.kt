@@ -208,9 +208,18 @@ fun main() {
 
     sayHello("Jack", "30")
 
+    var result1 = sumTwoNumbers(5, 3)
+
+    println(result1)
+
 }
 
 
 fun sayHello(name : String, age : String = "Not Specified") {
     println("Hello $name, your age is $age")
+}
+
+fun sumTwoNumbers(x: Int, y: Int): Int {
+    var z = x + y
+    return z
 }
