@@ -233,3 +233,12 @@ fun sumTwoNumbers(x: Double, y: Double): Double {
     var z = x + y
     return z
 }
+
+class Robot(val name: String) {
+    fun walk() {
+        println("The robot is walking now...")
+    }
+    fun speak(message: String) {
+        println("$name says: $message")
+    }
+}
