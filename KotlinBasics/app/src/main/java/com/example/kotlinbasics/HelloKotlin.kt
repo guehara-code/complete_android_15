@@ -212,6 +212,10 @@ fun main() {
 
     println(result1)
 
+    var resultDouble = sumTwoNumbers(5.3, 3.7)
+
+    println(resultDouble)
+
 }
 
 
@@ -220,6 +224,12 @@ fun sayHello(name : String, age : String = "Not Specified") {
 }
 
 fun sumTwoNumbers(x: Int, y: Int): Int {
+    var z = x + y
+    return z
+}
+
+// function overloading
+fun sumTwoNumbers(x: Double, y: Double): Double {
     var z = x + y
     return z
 }
