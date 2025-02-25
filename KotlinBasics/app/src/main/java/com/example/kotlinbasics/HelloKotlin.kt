@@ -216,6 +216,16 @@ fun main() {
 
     println(resultDouble)
 
+    // Objects
+
+    val robot1 : Robot = Robot("Buddy")
+    robot1.walk()
+    robot1.speak("Hello my friends")
+
+    val robot2 : Robot = Robot("Max")
+    robot2.walk()
+    robot2.speak("Hello from Robot2")
+
 }
 
 
