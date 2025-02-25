@@ -226,6 +226,17 @@ fun main() {
     robot2.walk()
     robot2.speak("Hello from Robot2")
 
+    // Inheritance
+    val ordinaryRobot = OrdinaryRobot("Max")
+    ordinaryRobot.walk()
+
+    val superRobot = SuperRobot("Buddy")
+    superRobot.cleanHouse()
+
+    val firingRobot = FiringRobot("Hero")
+    firingRobot.fire()
+
+
 }
 
 
