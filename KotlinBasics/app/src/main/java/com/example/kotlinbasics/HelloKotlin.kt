@@ -236,6 +236,10 @@ fun main() {
     val firingRobot = FiringRobot("Hero")
     firingRobot.fire()
 
+    val firingRobot2 = FiringRobot("Hero2", "2024")
+    firingRobot2.fire()
+    println(firingRobot2.modelYear)
+
 
 }
 
