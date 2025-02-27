@@ -240,6 +240,12 @@ fun main() {
     firingRobot2.fire()
     println(firingRobot2.modelYear)
 
+    println(firingRobot2.modelYear)
+    println(firingRobot2.name)
+
+    firingRobot2.modelYear = "2025"
+    firingRobot2.modelYear = "2023"
+    println(firingRobot2.modelYear)
 
 }
 

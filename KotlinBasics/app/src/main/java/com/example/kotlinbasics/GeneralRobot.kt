@@ -3,7 +3,22 @@ package com.example.kotlinbasics
 open class GeneralRobot {
 
     var name: String
-    var modelYear: String
+    var modelYear: String = ""
+        // Getters and Setters
+        get() {
+            println("Getting the model year, please wait... ")
+            return field
+        }
+
+        set(value) {
+            println("Changing the model year, please wait,,, ")
+            if (value.equals("2025")) {
+                println("You can't create future robots")
+            } else {
+                field = value
+            }
+        }
+
 
     // init block: to execute code in the object creation
 
