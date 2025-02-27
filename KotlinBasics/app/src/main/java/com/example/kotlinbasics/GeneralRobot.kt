@@ -1,6 +1,6 @@
 package com.example.kotlinbasics
 
-open class GeneralRobot() {
+open class GeneralRobot {
 
     var name: String
     var modelYear: String
@@ -14,13 +14,13 @@ open class GeneralRobot() {
     }
 
     // Primary constructor
-    constructor(name: String, modelYear: String) : this() {
+    constructor(name: String, modelYear: String) {
         this.name = name
         this.modelYear = modelYear
     }
 
     // Secondary constructor
-    constructor(name: String) : this() {
+    constructor(name: String) {
         this.name = name
         this.modelYear = "Unknown model year"
     }
