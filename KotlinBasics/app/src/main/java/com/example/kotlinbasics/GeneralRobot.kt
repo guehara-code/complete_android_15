@@ -2,7 +2,7 @@ package com.example.kotlinbasics
 
 open class GeneralRobot {
 
-    protected var serialNumber: String = "12345"
+    internal var serialNumber: String = "12345"
 
     var name: String
     var modelYear: String = ""
