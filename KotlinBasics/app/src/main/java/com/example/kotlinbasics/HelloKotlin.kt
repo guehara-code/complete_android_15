@@ -247,6 +247,10 @@ fun main() {
     firingRobot2.modelYear = "2023"
     println(firingRobot2.modelYear)
 
+//    firingRobot2.serialNumber = "8888"
+//    println(firingRobot2.serialNumber)
+
+
 }
 
 
