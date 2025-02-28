@@ -249,6 +249,7 @@ fun main() {
 
 //    firingRobot2.serialNumber = "8888"
 //    println(firingRobot2.serialNumber)
+    firingRobot2.fire()
 
 
 }

@@ -6,5 +6,7 @@ class FiringRobot : GeneralRobot {
     constructor(name: String): super(name)
     fun fire() {
         println("Firing...")
+        serialNumber = "8888"
+        println(serialNumber)
     }
 }
