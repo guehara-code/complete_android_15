@@ -9,4 +9,8 @@ class FiringRobot : GeneralRobot {
         serialNumber = "8888"
         println(serialNumber)
     }
+
+    override fun start() {
+        println("FiringRobot has started")
+    }
 }

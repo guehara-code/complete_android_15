@@ -249,7 +249,14 @@ fun main() {
 
     firingRobot2.serialNumber = "8888"
     println(firingRobot2.serialNumber)
-   
+
+    // abstract classes
+
+    // var generalRobot = GeneralRobot("General Robot")
+    var generalRobot: GeneralRobot = FiringRobot("General Robot")
+
+    generalRobot.start()
+
 
 
 }

@@ -1,6 +1,9 @@
 package com.example.kotlinbasics
 
-open class GeneralRobot {
+abstract class GeneralRobot {
+
+    // abstract function
+    abstract fun start()
 
     internal var serialNumber: String = "12345"
 
