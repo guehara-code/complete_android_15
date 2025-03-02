@@ -11,6 +11,10 @@ class FiringRobot : GeneralRobot {
     }
 
     override fun start() {
-        println("FiringRobot has started")
+        println("Starting firing robot")
+    }
+
+    override fun stop() {
+        println("Stop firing robot")
     }
 }

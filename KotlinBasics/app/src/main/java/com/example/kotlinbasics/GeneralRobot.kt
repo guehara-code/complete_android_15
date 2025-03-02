@@ -1,9 +1,9 @@
 package com.example.kotlinbasics
 
-abstract class GeneralRobot {
+abstract class GeneralRobot(): RobotActions {
 
     // abstract function
-    abstract fun start()
+//    abstract fun start()
 
     internal var serialNumber: String = "12345"
 
@@ -34,13 +34,13 @@ abstract class GeneralRobot {
     }
 
     // Primary constructor
-    constructor(name: String, modelYear: String) {
+    constructor(name: String, modelYear: String) : this() {
         this.name = name
         this.modelYear = modelYear
     }
 
     // Secondary constructor
-    constructor(name: String) {
+    constructor(name: String): this() {
         this.name = name
         this.modelYear = "Unknown model year"
     }

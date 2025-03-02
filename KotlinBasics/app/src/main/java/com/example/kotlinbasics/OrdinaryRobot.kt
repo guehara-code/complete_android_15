@@ -7,6 +7,10 @@ class OrdinaryRobot(name: String) : GeneralRobot(name){
     }
 
     override fun start() {
-        println("OrdinaryRobot has started")
+        println("Starting ordinary robot")
+    }
+
+    override fun stop() {
+        println("Stop ordinary robot")
     }
 }

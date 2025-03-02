@@ -8,7 +8,11 @@ class SuperRobot(name: String) : GeneralRobot(name){
     }
 
     override fun start() {
-        println("SuperRobot has started")
+        println("Starting super robot")
+    }
+
+    override fun stop() {
+        println("Stop super robot")
     }
 
 
