@@ -9,4 +9,27 @@ fun main() {
         println(item)
     }
 
+    // Mutable List
+    val vegetables = mutableListOf("Potato", "Tomato", "Broccoli")
+    val colors = arrayListOf("Red", "Green", "Blue")
+
+
+    vegetables.add("Carrot")
+    colors.add("Purple")
+
+    vegetables.removeAt(0)
+    colors.removeAt(0)
+
+    vegetables[1] = "Garlic"
+    colors[1] = "Yellow"
+
+    for (item in vegetables) {
+        println(item)
+    }
+
+    for (item in colors) {
+        println(item)
+    }
+
+
 }
