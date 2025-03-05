@@ -31,5 +31,12 @@ fun main() {
         println(item)
     }
 
+    // Immutable Set
+    val colorSet = setOf("Red", "Green", "Blue")
+
+    for (item in colorSet) {
+        println(item)
+    }
+
 
 }
