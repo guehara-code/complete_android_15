@@ -38,5 +38,23 @@ fun main() {
         println(item)
     }
 
+    // Mutable Set
+    val fruitsMSet = mutableSetOf("Apple", "Banana", "Cherry")
+
+    fruitsMSet.add("Melon")
+    fruitsMSet.add("Apple")
+
+    for (item in fruitsMSet) {
+        println(item)
+    }
+
+    fruitsMSet.remove("Banana")
+    fruitsMSet.add("Orange")
+
+    for (item in fruitsMSet) {
+        println(item)
+    }
+
+
 
 }
