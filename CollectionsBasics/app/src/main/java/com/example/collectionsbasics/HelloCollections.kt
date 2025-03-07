@@ -55,6 +55,10 @@ fun main() {
         println(item)
     }
 
+    // Immutable maps
+    val fruitsMap = mapOf("apple" to 5, "banana" to 8, "cherry" to 12)
 
+    val quantity = fruitsMap["banana"]
+    println("The quantity of bananas is " + quantity)
 
 }
