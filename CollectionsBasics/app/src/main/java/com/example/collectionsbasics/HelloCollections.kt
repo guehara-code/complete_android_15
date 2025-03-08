@@ -61,4 +61,16 @@ fun main() {
     val quantity = fruitsMap["banana"]
     println("The quantity of bananas is " + quantity)
 
+    // Mutable maps
+    val vegetablesPrice = mutableMapOf("potato" to 1.5,
+        "tomato" to 3.5, "broccoli" to 6.0)
+
+    vegetablesPrice["tomato"] = 4.0
+
+    vegetablesPrice.put("garlic", 6.0)
+
+    for ((key, value) in vegetablesPrice) {
+        println("Vegetable: $key, Price: $value")
+    }
+
 }
