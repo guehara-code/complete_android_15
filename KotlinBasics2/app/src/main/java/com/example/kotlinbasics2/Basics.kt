@@ -19,4 +19,7 @@ fun main() {
     val add4: () -> Unit = {println("No parameters, no return value")}
     add4.invoke()
 
+    // Direct use of lambda expressions
+    println({a: Int, b: Int -> a * b} (4, 5))
+
 }
