@@ -15,4 +15,8 @@ fun main() {
     val add3: () -> String = {"Welcome to our course"}
     println(add3.invoke())
 
+    // Lambda with no parameters and no return type
+    val add4: () -> Unit = {println("No parameters, no return value")}
+    add4.invoke()
+
 }
