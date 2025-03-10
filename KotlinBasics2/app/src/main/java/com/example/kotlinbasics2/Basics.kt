@@ -8,7 +8,11 @@ fun main() {
     println(result)
 
     // Lambda expressions with no return type
-    val add2: (Int, Int) -> Unit = {a, b -> print(a + b)}
+    val add2: (Int, Int) -> Unit = {a, b -> println(a + b)}
     add2(5, 5)
+
+    // Lambda with no parameters but with return type
+    val add3: () -> String = {"Welcome to our course"}
+    println(add3.invoke())
 
 }
