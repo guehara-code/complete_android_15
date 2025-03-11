@@ -22,4 +22,16 @@ fun main() {
     // Direct use of lambda expressions
     println({a: Int, b: Int -> a * b} (4, 5))
 
+
+    // Anonymous function
+    val number = listOf(1,2,3,4,5)
+
+    val squareAnonymousFunction = fun(x: Int): Int{
+        return x * x
+    }
+
+    val squaredNumbers = number.map(squareAnonymousFunction)
+
+    println(squaredNumbers)
+
 }
