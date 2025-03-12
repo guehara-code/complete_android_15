@@ -46,4 +46,8 @@ fun main() {
     val msg = fun(): String{return "Welcome to our course!"}
     println(msg())
 
+    // Anonymous function with no parameters and no return value
+    val msg2 = fun(): Unit{println("Welcome Again")}
+    msg2()
+
 }
