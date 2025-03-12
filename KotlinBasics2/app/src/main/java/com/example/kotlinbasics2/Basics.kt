@@ -42,4 +42,8 @@ fun main() {
     val multiply2 = fun(a: Int, b: Int) { println("" + a * b)}
     multiply2(4, 5)
 
+    // Anonymous function with no parameters and with return value
+    val msg = fun(): String{return "Welcome to our course!"}
+    println(msg())
+
 }
