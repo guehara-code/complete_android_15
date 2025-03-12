@@ -34,4 +34,8 @@ fun main() {
 
     println(squaredNumbers)
 
+    // Anonymous function with parameters and return value
+    val multiply = fun(a: Int, b: Int): Int{return a * b}
+    println(multiply.invoke(6, 6))
+
 }
