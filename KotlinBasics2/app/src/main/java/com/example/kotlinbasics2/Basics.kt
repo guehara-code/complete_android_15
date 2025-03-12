@@ -38,4 +38,8 @@ fun main() {
     val multiply = fun(a: Int, b: Int): Int{return a * b}
     println(multiply.invoke(6, 6))
 
+    // Anonymous function with parameters and no return value
+    val multiply2 = fun(a: Int, b: Int) { println("" + a * b)}
+    multiply2(4, 5)
+
 }
