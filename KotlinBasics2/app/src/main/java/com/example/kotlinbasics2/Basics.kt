@@ -50,4 +50,17 @@ fun main() {
     val msg2 = fun(): Unit{println("Welcome Again")}
     msg2()
 
+    // Higher order function
+    val addResult = operateOnNumbers(5, 3){x, y -> x + y}
+    val multiplyResult = operateOnNumbers(5, 3) {x, y -> x * y}
+
+    println("Addition Result: $addResult")
+    println("Multiplication Result: $multiplyResult")
+
+
+}
+
+// Higher order function
+fun operateOnNumbers(a: Int, b: Int, operation:(Int, Int) -> Int): Int {
+    return operation(a, b)
 }
