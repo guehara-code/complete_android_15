@@ -57,6 +57,11 @@ fun main() {
     println("Addition Result: $addResult")
     println("Multiplication Result: $multiplyResult")
 
+    // Using "it" keyword
+    val numbers = listOf(1, 2, 3, 4, 5)
+    val squaredNumbers2 = numbers.map{it * it}
+    println(squaredNumbers2)
+
 
 }
 
