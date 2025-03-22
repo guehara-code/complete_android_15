@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,9 +33,33 @@ class MainActivity : AppCompatActivity() {
         // Initialize the widgets
         imageView = findViewById(R.id.imageView)
         languageEditText = findViewById(R.id.javaOrKotlinEditText)
-        nameEditText = findViewById(R.id.textView)
+        nameEditText = findViewById(R.id.textView2)
         button = findViewById(R.id.button)
-        textView = findViewById(R.id.textView2)
+        textView = findViewById(R.id.textView)
+
+        // handling user interactions
+        button.setOnClickListener {
+            // Getting the name of the user
+            var userName = nameEditText.text.toString()
+
+            // Getting the language specified by the user
+            var languageSelected = languageEditText.text.toString()
+
+            // Say hello to the user
+            Toast.makeText(this, "Hello $userName", Toast.LENGTH_LONG).show()
+
+
+            // Display Java or Kotlin logo
+            if (languageSelected.equals("Java")) {
+                imageView.setImageResource(R.drawable.java_logo)
+            } else {
+                imageView.setImageResource(R.drawable.kotlin_logo)
+            }
+
+        }
+
+
+
 
     }
 }
