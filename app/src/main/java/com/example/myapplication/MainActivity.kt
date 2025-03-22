@@ -1,12 +1,24 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    // Declaring the views
+    lateinit var imageView: ImageView
+    lateinit var nameEditText: EditText
+    lateinit var languageEditText: EditText
+    lateinit var textView: TextView
+    lateinit var button: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +28,13 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Initialize the widgets
+        imageView = findViewById(R.id.imageView)
+        languageEditText = findViewById(R.id.javaOrKotlinEditText)
+        nameEditText = findViewById(R.id.textView)
+        button = findViewById(R.id.button)
+        textView = findViewById(R.id.textView2)
+
     }
 }
