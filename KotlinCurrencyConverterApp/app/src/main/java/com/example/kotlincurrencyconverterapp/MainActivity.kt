@@ -34,5 +34,19 @@ class MainActivity : AppCompatActivity() {
         editText = findViewById(R.id.editText)
         convertButton = findViewById(R.id.convertBTN)
 
+        convertButton.setOnClickListener {
+            var enteredUSD: String = editText.text.toString()
+            var enteredUSD_double: Double = enteredUSD.toDouble()
+
+            var euros = makeConversion(enteredUSD_double)
+
+            resultTextView.text = euros.toString() + " Euros"
+        }
+
     }
+
+    fun makeConversion(usd: Double): Double {
+        return usd * 0.94
+    }
+
 }
