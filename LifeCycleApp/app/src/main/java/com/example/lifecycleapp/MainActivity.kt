@@ -1,6 +1,7 @@
 package com.example.lifecycleapp
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.Telephony.Mms.Intents
 import android.widget.Button
@@ -12,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
 
     lateinit var myButton: Button
+    lateinit var openWeb: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,16 @@ class MainActivity : AppCompatActivity() {
 
             explicitIntent.putExtra("myname", "Jack")
             startActivity(explicitIntent)
+        }
+
+        openWeb = findViewById(R.id.openWebBtn)
+        openWeb.setOnClickListener{
+            val implicitIntent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://www.google.com")
+            )
+
+            startActivity(implicitIntent)
         }
 
 
