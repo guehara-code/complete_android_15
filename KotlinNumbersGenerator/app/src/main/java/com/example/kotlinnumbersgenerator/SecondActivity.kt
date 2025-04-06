@@ -27,5 +27,22 @@ class SecondActivity : AppCompatActivity() {
         textViewTitle = findViewById(R.id.textView2)
         textGeneratedNumbers = findViewById(R.id.resultTextView)
         shareButton = findViewById(R.id.shareBtn)
+
+        val randomNumbers = generateRandomNumbers(6)
+    }
+
+    fun generateRandomNumbers(count: Int): String {
+        // Create a list of random numbers
+        var randomNumbers = List(count) {
+
+            //lambda expression to generate random numbers
+            (0..42).random()
+
+        // val random = java.util.Random()
+        // val randomNumber = random.nextInt(43)
+        }
+
+        // Convert the list of numbers to a string
+        return randomNumbers.joinToString(" ")
     }
 }
