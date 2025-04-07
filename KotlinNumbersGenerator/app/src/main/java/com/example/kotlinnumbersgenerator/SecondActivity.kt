@@ -1,5 +1,6 @@
 package com.example.kotlinnumbersgenerator
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -29,6 +30,14 @@ class SecondActivity : AppCompatActivity() {
         shareButton = findViewById(R.id.shareBtn)
 
         val randomNumbers = generateRandomNumbers(6)
+        textGeneratedNumbers.text = randomNumbers
+
+        var username = receiveUserName()
+
+        shareButton.setOnClickListener {
+            shareResult(username, randomNumbers)
+        }
+        
     }
 
     fun generateRandomNumbers(count: Int): String {
@@ -36,13 +45,31 @@ class SecondActivity : AppCompatActivity() {
         var randomNumbers = List(count) {
 
             //lambda expression to generate random numbers
-            (0..42).random()
+            (1..42).random()
 
-        // val random = java.util.Random()
-        // val randomNumber = random.nextInt(43)
+//        val random = java.util.Random()
+//        val randomNumber = random.nextInt(43)
         }
 
         // Convert the list of numbers to a string
-        return randomNumbers.joinToString(" ")
+        return randomNumbers.joinToString("-")
+    }
+
+    fun receiveUserName(): String {
+        // retrieve the extras that were added to an Intent
+        // ? -> indicates that the variable can be null
+        var bundle: Bundle? = intent.extras
+
+        var username = bundle?.getString("username").toString()
+
+        return username
+    }
+
+    fun shareResult(username: String, generatedNums: String) {
+        var i = Intent(Intent.ACTION_SEND)
+        i.setType("text/plain")
+        i.putExtra(Intent.EXTRA_SUBJECT, "$username generates these numbers")
+        i.putExtra(Intent.EXTRA_TEXT, "The Lottery Numbers are: $generatedNums")
+        startActivity(i)
     }
 }
