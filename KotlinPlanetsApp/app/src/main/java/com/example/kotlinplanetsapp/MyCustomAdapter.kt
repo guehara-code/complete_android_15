@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 
-class MyCustomAdapter(val context: Context, val planets: List<Planet>): BaseAdapter {
+class MyCustomAdapter(val context: Context, val planets: List<Planet>): BaseAdapter() {
     override fun getCount(): Int {
         return planets.size
     }
