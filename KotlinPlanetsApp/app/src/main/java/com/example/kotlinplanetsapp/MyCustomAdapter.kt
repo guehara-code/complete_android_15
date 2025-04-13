@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 
 class MyCustomAdapter(val context: Context, val planets: List<Planet>): BaseAdapter() {
     override fun getCount(): Int {
@@ -39,6 +40,14 @@ class MyCustomAdapter(val context: Context, val planets: List<Planet>): BaseAdap
         titleTextView.text = item.title
         moonCountTextView.text = item.moonCount
         moon_image.setImageResource(item.imagePlanet)
+
+        view.setOnClickListener{
+            Toast.makeText(
+                context,
+                "You clicked: ${planets[position].title}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
 
         return view
     }
