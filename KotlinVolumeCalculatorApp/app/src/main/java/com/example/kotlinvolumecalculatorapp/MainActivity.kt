@@ -1,6 +1,7 @@
 package com.example.kotlinvolumecalculatorapp
 
 import android.os.Bundle
+import android.widget.GridView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +17,20 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val gridView: GridView = findViewById(R.id.gridView)
+
+        var shape1: Shape = Shape(R.drawable.sphere, "Sphere")
+        var shape2: Shape = Shape(R.drawable.cube, "Cube")
+        var shape3: Shape = Shape(R.drawable.prism, "Prism")
+        var shape4: Shape = Shape(R.drawable.cylinder, "Cylinder")
+
+        val gridItems = listOf<Shape>(shape1, shape2, shape3, shape4)
+
+        val customAdapter = MyCustomAdapter(this, gridItems)
+        gridView.adapter = customAdapter
+
+
+
     }
 }
