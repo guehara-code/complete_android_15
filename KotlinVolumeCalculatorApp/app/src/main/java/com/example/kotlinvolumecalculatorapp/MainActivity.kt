@@ -1,5 +1,6 @@
 package com.example.kotlinvolumecalculatorapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.GridView
 import androidx.activity.enableEdgeToEdge
@@ -30,7 +31,14 @@ class MainActivity : AppCompatActivity() {
         val customAdapter = MyCustomAdapter(this, gridItems)
         gridView.adapter = customAdapter
 
+        gridView.setOnItemClickListener {_, _, position, _ ->
+            val clickedItem = customAdapter.getItem(position)
 
+            if(clickedItem?.shapeName.equals("Sphere")) {
+                val i = Intent(this, SphereActivity::class.java)
+                startActivity(i)
+            }
+        }
 
     }
 }
