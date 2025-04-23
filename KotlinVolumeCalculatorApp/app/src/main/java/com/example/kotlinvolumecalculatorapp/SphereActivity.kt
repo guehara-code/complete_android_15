@@ -1,6 +1,9 @@
 package com.example.kotlinvolumecalculatorapp
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +19,10 @@ class SphereActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val textView: TextView = findViewById(R.id.textView2)
+        val result = findViewById<TextView>(R.id.textView3)
+        val button = findViewById<Button>(R.id.btn1)
+        val edtText = findViewById<EditText>(R.id.editText_Sphere)
     }
 }
