@@ -24,5 +24,13 @@ class SphereActivity : AppCompatActivity() {
         val result = findViewById<TextView>(R.id.textView3)
         val button = findViewById<Button>(R.id.btn1)
         val edtText = findViewById<EditText>(R.id.editText_Sphere)
+
+        button.setOnClickListener {
+            var radius = edtText.text.toString()
+            var r = Integer.parseInt(radius)
+
+            var volume = (4/3) * 3.14159 * r*r*r
+            result.text = "V = $volume m^3"
+        }
     }
 }
