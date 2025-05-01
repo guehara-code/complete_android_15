@@ -43,5 +43,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = MyAdapter(groceryItems)
         recyclerView.adapter = adapter
 
+
+
     }
 }
