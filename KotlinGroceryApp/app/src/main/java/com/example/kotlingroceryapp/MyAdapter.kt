@@ -31,11 +31,13 @@ class MyAdapter(val itemsList: ArrayList<ItemModel>): RecyclerView.Adapter<MyAda
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return itemsList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.itemTitle.setText(itemsList[position].name)
+        holder.itemDesc.setText(itemsList[position].desc)
+        holder.itemImg.setImageResource(itemsList[position].img)
     }
 
 
