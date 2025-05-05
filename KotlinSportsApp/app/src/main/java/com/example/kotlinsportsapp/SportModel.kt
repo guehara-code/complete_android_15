@@ -1,3 +1,3 @@
 package com.example.kotlinsportsapp
 
-data class SportModel(val imageCard: Int, val sportName: String)
+data class SportModel(val sportImg: Int, val sportName: String)

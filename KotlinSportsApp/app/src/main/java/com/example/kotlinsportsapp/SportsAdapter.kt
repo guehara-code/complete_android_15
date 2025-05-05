@@ -1,5 +1,6 @@
 package com.example.kotlinsportsapp
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -20,15 +21,18 @@ class SportsAdapter(val sportsList: ArrayList<SportModel>): RecyclerView.Adapter
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        TODO("Not yet implemented")
+        val v = LayoutInflater.from(parent.context)
+            .inflate(R.layout.card_item_layout, parent, false)
+        return MyViewHolder(v)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return sportsList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.sportsImg.setImageResource(sportsList[position].sportImg)
+        holder.sportsName.setText(sportsList[position].sportName)
     }
 }
 
