@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class SportsAdapter(val sportsList: ArrayList<SportModel>): RecyclerView.Adapter<SportsAdapter.MyViewHolder>() {
@@ -17,7 +18,19 @@ class SportsAdapter(val sportsList: ArrayList<SportModel>): RecyclerView.Adapter
         init {
             sportsImg = itemView.findViewById(R.id.imageViewCard)
             sportsName = itemView.findViewById(R.id.textView)
+
+            itemView.setOnClickListener() {
+                Toast.makeText(
+                    itemView.context,
+                    "You clicked: ${sportsList[adapterPosition].sportName}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
+
+
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
