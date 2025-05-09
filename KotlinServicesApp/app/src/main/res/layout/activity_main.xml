@@ -39,7 +39,7 @@
         android:text="Stop Default Ringtone"
         app:layout_constraintBaseline_toBaselineOf="@+id/playRingtone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/playRingtone"
+        app:layout_constraintStart_toEndOf="@+id/playRingtone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
