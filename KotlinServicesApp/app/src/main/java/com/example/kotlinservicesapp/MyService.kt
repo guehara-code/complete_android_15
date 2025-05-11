@@ -9,7 +9,7 @@ import android.provider.Settings
 class MyService: Service() {
 
     // to play music, we need a media player object
-    lateint var mediaPlayer: MediaPlayer
+    lateinit var mediaPlayer: MediaPlayer
 
     override fun onBind(intent: Intent?): IBinder? {
 
