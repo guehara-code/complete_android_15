@@ -27,6 +27,13 @@ class FragmentOne : Fragment() {
             Toast.LENGTH_SHORT).show()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Toast.makeText(context,
+            "onCreate() is called",
+            Toast.LENGTH_SHORT).show()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
