@@ -38,8 +38,72 @@ class FragmentOne : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        Toast.makeText(context,
+            "onCreateView() is called",
+            Toast.LENGTH_SHORT).show()
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_one, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onStart() {
+        Toast.makeText(context,
+            "onStart() is called",
+            Toast.LENGTH_SHORT).show()
+
+        super.onStart()
+    }
+
+    override fun onResume() {
+
+        Toast.makeText(context,
+            "onResume() is called",
+            Toast.LENGTH_SHORT).show()
+
+        super.onResume()
+    }
+
+    override fun onPause() {
+        Toast.makeText(context,
+            "onPause() is called",
+            Toast.LENGTH_SHORT).show()
+        super.onPause()
+    }
+
+    override fun onStop() {
+
+        Toast.makeText(context,
+            "onStop() is called",
+            Toast.LENGTH_SHORT).show()
+
+        super.onStop()
+    }
+
+    override fun onDestroyView() {
+        Toast.makeText(context,
+            "onDestroyView() is called",
+            Toast.LENGTH_SHORT).show()
+        super.onDestroyView()
+    }
+
+    override fun onDestroy() {
+
+        Toast.makeText(context,
+            "onDestroy() is called",
+            Toast.LENGTH_SHORT).show()
+        super.onDestroy()
+    }
+
+    override fun onDetach() {
+        Toast.makeText(context,
+            "onDetach() is called",
+            Toast.LENGTH_SHORT).show()
+        super.onDetach()
     }
 
 }
