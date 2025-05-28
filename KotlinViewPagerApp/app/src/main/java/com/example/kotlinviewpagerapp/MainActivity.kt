@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewPager2: ViewPager2
     lateinit var myAdapter: MyPagerAdapter
+    lateinit var tabLayout: TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,15 @@ class MainActivity : AppCompatActivity() {
         myAdapter.addFragmentToList(FragmentThree())
 
         viewPager2.adapter = myAdapter
+
+        tabLayout = findViewById(R.id.tablayout)
+        TabLayoutMediator(
+            tabLayout,
+            viewPager2
+        ) {
+            tab, position ->
+            tab.text = "Tab ${position+1}"
+        }.attach()
 
     }
 }
