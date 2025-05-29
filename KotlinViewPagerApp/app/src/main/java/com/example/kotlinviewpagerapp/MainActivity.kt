@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var myAdapter: MyPagerAdapter
     lateinit var tabLayout: TabLayout
 
+    var tabsArray = arrayOf("My App", "Coding", "Last Advice")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,7 +42,8 @@ class MainActivity : AppCompatActivity() {
             viewPager2
         ) {
             tab, position ->
-            tab.text = "Tab ${position+1}"
+//            tab.text = "Tab ${position+1}"
+            tab.text = tabsArray[position]
         }.attach()
 
     }
