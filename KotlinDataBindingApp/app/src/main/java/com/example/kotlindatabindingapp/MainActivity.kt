@@ -26,7 +26,10 @@ class MainActivity : AppCompatActivity() {
             this, R.layout.activity_main
         )
 
-        binding.textView1.text = "Hello My Friends"
+        var v1 = Vehicle("2024", "Mercedes")
+        binding.myVehicle = v1
+
+//        binding.textView1.text = v1.name
 
     }
 }
