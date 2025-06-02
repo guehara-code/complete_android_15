@@ -1,6 +1,7 @@
 package com.example.kotlindatabindingapp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         binding.myVehicle = v1
 
 //        binding.textView1.text = v1.name
+
+        binding.button.setOnClickListener {
+            Toast.makeText(this, "You clicked the button", Toast.LENGTH_SHORT).show()
+        }
 
     }
 }
