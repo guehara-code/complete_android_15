@@ -32,9 +32,11 @@ class MainActivity : AppCompatActivity() {
 
 //        binding.textView1.text = v1.name
 
-        binding.button.setOnClickListener {
-            Toast.makeText(this, "You clicked the button", Toast.LENGTH_SHORT).show()
-        }
+//        binding.button.setOnClickListener {
+//            Toast.makeText(this, "You clicked the button", Toast.LENGTH_SHORT).show()
+//        }
+
+        binding.clickHandler = VehicleClickHandlers(this)
 
     }
 }
