@@ -1,3 +1,16 @@
 package com.example.kotlindatabindingapp
 
-data class Vehicle(val modelYear: String, val name: String)
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+
+class Vehicle: BaseObservable() {
+
+    var modelYear: String = ""
+
+    @Bindable
+    var name: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.name)
+        }
+}
