@@ -44,7 +44,7 @@ class MyEquation(var binding: ActivityMainBinding): BaseObservable() {
             x1 = (-b + sqrt(discriminant.toDouble()))/(2*a)
             x2 = (-b - sqrt(discriminant.toDouble()))/(2*a)
 
-            binding.textView.text = "X1 = $x1, X2 = $x2"
+            binding.resultText.text = "X1 = $x1, X2 = $x2"
         } else if(discriminant < 0) {
             binding.resultText.text = "No Real Roots(Complex Roots)"
         } else {

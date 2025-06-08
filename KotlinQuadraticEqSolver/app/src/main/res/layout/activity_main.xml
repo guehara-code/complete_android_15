@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="equation"
+            type="com.example.kotlinquadraticeqsolver.MyEquation" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,6 +30,7 @@
             app:layout_constraintVertical_bias="0.179" />
 
         <EditText
+            android:text="@={equation.a}"
             android:id="@+id/editText1"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -38,6 +41,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <EditText
+            android:text="@={equation.b}"
             android:id="@+id/editText2"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -48,6 +52,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <EditText
+            android:text="@={equation.c}"
             android:id="@+id/editText3"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -58,6 +63,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <Button
+            android:onClick="@{equation::solveEquation}"
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,6 +74,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
+
             android:id="@+id/resultText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
