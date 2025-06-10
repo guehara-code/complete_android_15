@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinquadraticeqsolver.CounterViewModel
 import com.example.kotlinviewmodelapp.databinding.ActivityMainBinding
 
@@ -26,8 +27,15 @@ class MainActivity : AppCompatActivity() {
         var binding = DataBindingUtil
             .setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
-//        var binding = DataBindingUtil
-//            .setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-//        counterViewModel = viewModelProvider(this).get(CounterViewModel::class.java)
+        counterViewModel = ViewModelProvider(this).get(CounterViewModel::class.java)
+
+        binding.textView2.text = counterViewModel.getCurrentCounter().toString()
+
+        binding.button.setOnClickListener {
+            counterViewModel.incrementCounter()
+
+            binding.textView2.text = counterViewModel.getCurrentCounter().toString()
+        }
+
     }
 }
