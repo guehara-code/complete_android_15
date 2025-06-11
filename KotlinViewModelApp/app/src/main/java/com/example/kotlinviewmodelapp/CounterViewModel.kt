@@ -1,16 +1,22 @@
-package com.example.kotlinquadraticeqsolver
+package com.example.kotlinviewmodelapp
 
+import android.view.View
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class CounterViewModel: ViewModel() {
 
-    private var counter = 0
+    var counter = MutableLiveData<Int>()
 
-    fun incrementCounter() {
-        counter++
+    init {
+        counter.value = 0
     }
 
-    fun getCurrentCounter(): Int {
-        return counter
+    fun incrementCounter(view: View) {
+        counter.value = (counter.value)?.plus(1)
     }
+
+//    fun getCurrentCounter(): Int {
+//        return counter
+//    }
 }

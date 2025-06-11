@@ -7,7 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.example.kotlinquadraticeqsolver.CounterViewModel
+import com.example.kotlinviewmodelapp.CounterViewModel
 import com.example.kotlinviewmodelapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -29,13 +29,16 @@ class MainActivity : AppCompatActivity() {
 
         counterViewModel = ViewModelProvider(this).get(CounterViewModel::class.java)
 
-        binding.textView2.text = counterViewModel.getCurrentCounter().toString()
+        binding.lifecycleOwner = this
+        binding.myViewModel = counterViewModel
 
-        binding.button.setOnClickListener {
-            counterViewModel.incrementCounter()
-
-            binding.textView2.text = counterViewModel.getCurrentCounter().toString()
-        }
+//        binding.textView2.text = counterViewModel.getCurrentCounter().toString()
+//
+//        binding.button.setOnClickListener {
+//            counterViewModel.incrementCounter()
+//
+//            binding.textView2.text = counterViewModel.getCurrentCounter().toString()
+//        }
 
     }
 }
