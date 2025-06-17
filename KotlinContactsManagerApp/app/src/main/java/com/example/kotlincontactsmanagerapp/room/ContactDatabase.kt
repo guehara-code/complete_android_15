@@ -1,4 +1,4 @@
-package com.example.kotlincontactsmanagerapp
+package com.example.kotlincontactsmanagerapp.room
 
 import android.content.Context
 import androidx.room.Database
@@ -11,8 +11,8 @@ abstract class ContactDatabase: RoomDatabase() {
 
     companion object {
         @Volatile
-        private var INSTANCE: ContactDatabase ?= null
-        fun getInstance(context: Context): ContactDatabase{
+        private var INSTANCE: ContactDatabase?= null
+        fun getInstance(context: Context): ContactDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if(instance == null) {

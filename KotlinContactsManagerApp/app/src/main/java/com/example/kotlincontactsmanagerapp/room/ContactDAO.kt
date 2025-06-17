@@ -1,4 +1,4 @@
-package com.example.kotlincontactsmanagerapp
+package com.example.kotlincontactsmanagerapp.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.Delete

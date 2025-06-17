@@ -1,6 +1,5 @@
-package com.example.kotlincontactsmanagerapp
+package com.example.kotlincontactsmanagerapp.room
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
