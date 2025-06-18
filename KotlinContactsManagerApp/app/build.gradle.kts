@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
-    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
 }
 
 android {
@@ -35,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -52,9 +56,15 @@ dependencies {
 
     implementation("androidx.room:room-runtime:$room_version")
 
-    ksp("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
 
     implementation("androidx.room:room-ktx:$room_version")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    val lifecycle_version = "2.9.1"
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 }
