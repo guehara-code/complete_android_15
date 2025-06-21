@@ -3,6 +3,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="contactViewModel"
+            type="com.example.kotlincontactsmanagerapp.viewmodel.ContactViewModel" />
+        
+    </data>
+    
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -18,6 +26,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <EditText
+                android:text="@={contactViewModel.inputName}"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/nameET"
@@ -28,6 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <EditText
+                android:text="@={contactViewModel.inputEmail}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/emailET"
@@ -38,6 +48,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/nameET"/>
             
             <Button
+                android:onClick="@{()->contactViewModel.saveOrUpdate()}"
+                android:text="@={contactViewModel.saveOrUpdateButtonText}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn1"
@@ -48,6 +60,8 @@
                 app:layout_constraintTop_toTopOf="parent"/>
             
             <Button
+                android:onClick="@{()->contactViewModel.clearAllOrDelete()}"
+                android:text="@={contactViewModel.clearAllOrDeleteButtonText}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn2"
