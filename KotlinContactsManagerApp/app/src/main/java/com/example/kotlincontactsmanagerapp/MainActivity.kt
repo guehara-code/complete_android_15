@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun DisplayUsersList() {
-        contactViewModel.users.observe(this, {
-            binding.recycleView.adapter = 
+        contactViewModel.contacts.observe(this, {
+            binding.recycleView.adapter =
         })
     }
 }

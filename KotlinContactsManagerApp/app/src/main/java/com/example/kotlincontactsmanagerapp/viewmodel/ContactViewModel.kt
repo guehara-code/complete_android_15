@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class ContactViewModel (private val repository: ContactRepository): ViewModel(), Observable {
 
-    val users = repository.contacts
+    val contacts = repository.contacts
     private var isUpdateOrDelete = false
     private lateinit var contactToUpdateOrDelete: Contact
 
