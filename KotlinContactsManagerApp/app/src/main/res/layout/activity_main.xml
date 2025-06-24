@@ -27,12 +27,16 @@
 
             <EditText
                 android:text="@={contactViewModel.inputName}"
-                android:layout_width="150dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/nameET"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="115dp"
+                android:layout_marginBottom="12dp"
                 android:hint="enter your name"
+                app:layout_constraintBottom_toTopOf="@+id/emailET"
+                app:layout_constraintEnd_toStartOf="@+id/btn1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -42,9 +46,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/emailET"
                 android:hint="enter your email"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="116dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/nameET"
-                app:layout_constraintStart_toStartOf="nameET"
+                app:layout_constraintEnd_toStartOf="@+id/btn2"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nameET"/>
             
             <Button
@@ -53,23 +60,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn1"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="42dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/nameET"
                 app:layout_constraintTop_toTopOf="parent"/>
-            
+
             <Button
-                android:onClick="@{()->contactViewModel.clearAllOrDelete()}"
-                android:text="@={contactViewModel.clearAllOrDeleteButtonText}"
+                android:id="@+id/btn2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn2"
+                android:onClick="@{()->contactViewModel.clearAllOrDelete()}"
+                android:text="@={contactViewModel.clearAllOrDeleteButtonText}"
                 android:layout_marginEnd="41dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/emailET"
-                app:layout_constraintTop_toBottomOf="btn1"/>
+                app:layout_constraintTop_toBottomOf="@+id/btn1"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -79,6 +88,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraint2"
             android:id="@+id/recycleView"/>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
