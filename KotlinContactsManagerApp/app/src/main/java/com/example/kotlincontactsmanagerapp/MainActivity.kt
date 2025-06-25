@@ -15,6 +15,7 @@ import com.example.kotlincontactsmanagerapp.room.Contact
 import com.example.kotlincontactsmanagerapp.room.ContactDatabase
 import com.example.kotlincontactsmanagerapp.view.MyRecyclerViewAdapter
 import com.example.kotlincontactsmanagerapp.viewmodel.ContactViewModel
+import com.example.kotlincontactsmanagerapp.viewmodel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,8 +36,9 @@ class MainActivity : AppCompatActivity() {
 
         var dao = ContactDatabase.getInstance(applicationContext).contactDAO
         val repository = ContactRepository(dao)
+        val factory = ViewModelFactory(repository)
 
-        contactViewModel = ViewModelProvider(this).get(ContactViewModel::class.java)
+        contactViewModel = ViewModelProvider(this, factory).get(ContactViewModel::class.java)
 
         binding.contactViewModel = contactViewModel
 
