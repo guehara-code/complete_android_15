@@ -20,6 +20,10 @@ class SecondFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_second, container, false)
+
+        var input = arguments!!.getString("name")
+        binding.textViewSecondFrag.text = input.toString()
+
         return binding.root
 
 
