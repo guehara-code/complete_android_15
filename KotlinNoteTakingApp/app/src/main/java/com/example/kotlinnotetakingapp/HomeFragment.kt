@@ -25,7 +25,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -33,7 +33,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeBinding.inflate(inflater,container)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -75,12 +75,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     }
 
     private fun updateUI(note: List<Note>?) {
-        if(note.isNotEmpty()) {
-            binding.cardView.visibility = View.GONE
-            binding.recyclerView.visibility = View.VISIBLE
-        } else {
-            binding.cardView.visibility = View.VISIBLE
-            binding.recyclerView.visibility = View.GONE
+        if (note != null) {
+            if(note.isNotEmpty()) {
+                binding.cardView.visibility = View.GONE
+                binding.recyclerView.visibility = View.VISIBLE
+            } else {
+                binding.cardView.visibility = View.VISIBLE
+                binding.recyclerView.visibility = View.GONE
+            }
         }
 
     }
