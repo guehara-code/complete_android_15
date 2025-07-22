@@ -12,13 +12,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.kotlinnotetakingapp.adapter.NoteAdapter
-import com.example.kotlinnotetakingapp.databinding.FragmentHomeBinding
-import com.example.kotlinnotetakingapp.databinding.FragmentNewNoteBinding
 import com.example.kotlinnotetakingapp.databinding.FragmentUpdateNoteBinding
 import com.example.kotlinnotetakingapp.model.Note
 import com.example.kotlinnotetakingapp.viewmodel.NoteViewModel
-import kotlin.concurrent.timerTask
 
 class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
 
