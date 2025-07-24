@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
 
+    id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs")
     id("kotlin-parcelize")
 }
@@ -54,22 +54,40 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
 
-    val room_version = "2.7.2"
-    implementation("androidx.room:room-runtime:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
+//    val room_version = "2.7.2"
+//    implementation("androidx.room:room-runtime:$room_version")
+//    kapt("androidx.room:room-compiler:$room_version")
+//    implementation("androidx.room:room-ktx:$room_version")
+//
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+//
+//    val nav_version = "2.9.1"
+//    implementation("androidx.navigation:navigation-fragment:$nav_version")
+//    implementation("androidx.navigation:navigation-ui:$nav_version")
+//
+//    val lifecycle_version = "2.9.1"
+//
+//
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+//    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+//    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    val room_version = "2.7.2"
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+
+    implementation(libs.kotlinx.coroutines.android)
 
     val nav_version = "2.9.1"
-    implementation("androidx.navigation:navigation-fragment:$nav_version")
-    implementation("androidx.navigation:navigation-ui:$nav_version")
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
 
     val lifecycle_version = "2.9.1"
 
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    ksp(libs.androidx.lifecycle.compiler)
 
 }
