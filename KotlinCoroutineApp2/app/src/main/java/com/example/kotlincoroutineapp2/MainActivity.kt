@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun SayHelloFromMainThread{
+    private fun SayHelloFromMainThread() {
 
         CoroutineScope(Dispatchers.Main).launch {
             binding.text1.text = "Hello From " +
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun SayHelloFromBackThread {
+    private fun SayHelloFromBackThread() {
         CoroutineScope(Dispatchers.IO).launch {
             binding.text2.text = " Hello From " +
                     " ${Thread.currentThread().name}"
