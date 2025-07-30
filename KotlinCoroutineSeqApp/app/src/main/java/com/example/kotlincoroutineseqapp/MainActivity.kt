@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -23,17 +24,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         CoroutineScope(Dispatchers.IO).launch {
-            val one = doSomethingUsefull1()
-            val two = doSomethingUsefull2()
 
-            val result = one + two
+            Log.v("TAGY", "The App started")
+
+            val one = async {
+                doSomethingUsefull1()
+            }
+            val two = async {
+                doSomethingUsefull2()
+            }
+
+            val result = one.await() + two.await()
             Log.v("TAGGY", "The result is : $result")
         }
 
     }
 
     suspend fun doSomethingUsefull1(): Int {
-        delay(5000)
+        delay(9000)
         Log.v("TAGGY", "Fun1 is DONE")
         return 11
     }
