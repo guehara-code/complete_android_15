@@ -5,6 +5,7 @@ plugins {
     id("kotlin-kapt")
 }
 
+
 android {
     namespace = "com.example.kotlinretrofitapp"
     compileSdk = 35
@@ -48,15 +49,22 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.kotlinx.coroutines.android)
+//    implementation(libs.retrofit)
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+//    implementation(libs.converter.gson)
+//    implementation(libs.kotlinx.coroutines.android)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
+//    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+//    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.2")
 
-    kapt(libs.androidx.lifecycle.compiler)
+    kapt("androidx.lifecycle:lifecycle-compiler:2.9.2")
 
-    implementation(libs.logging.interceptor)
+//    kapt(libs.androidx.lifecycle.compiler)
 
+//    implementation(libs.logging.interceptor)
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
 }

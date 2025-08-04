@@ -1,10 +1,16 @@
 package com.example.kotlinretrofitapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.liveData
+import retrofit2.Response
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,5 +22,45 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        Log.v("TAGY", "PASS1")
+
+
+        val retrofitService = RetrofitInstance
+            .getRetrofitInstance()
+            .create(AlbumService::class.java)
+
+        Log.v("TAGY", "PASS2")
+        Log.v("TAGY", "retrofitService" + retrofitService.toString())
+
+
+        val responseLiveData: LiveData<Response<Albums>> =
+            liveData {
+                try {
+                    val response = retrofitService.getAlbums()
+                    Log.v("TAGY", "PASS LiveData")
+                    Log.v("TAGY", "response" + response.toString())
+                    emit(response)
+                } catch (e: Exception) {
+                    Log.v("TAGY - error", e.toString())
+                }
+            }
+        Log.v("TAGY", "PASS3")
+        Log.v("TAGY", "responseLivedata" + responseLiveData.hasObservers().toString())
+
+
+        responseLiveData.observe(this, Observer {
+
+            val albumsList = it.body()?.listIterator()
+
+            if(albumsList != null) {
+                while(albumsList.hasNext()) {
+                    val albumItem = albumsList.next()
+                    Log.v("TAGY", albumItem.title)
+
+                }
+            }
+        })
+
     }
 }
