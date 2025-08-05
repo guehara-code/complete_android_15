@@ -2,6 +2,7 @@ package com.example.kotlinretrofitapp
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val textView: TextView = findViewById(R.id.textView)
 
         Log.v("TAGY", "PASS1")
 
@@ -56,8 +59,11 @@ class MainActivity : AppCompatActivity() {
             if(albumsList != null) {
                 while(albumsList.hasNext()) {
                     val albumItem = albumsList.next()
-                    Log.v("TAGY", albumItem.title)
+//                    Log.i("TAGY", albumItem.title)
 
+                    val result = " Album Title: ${albumItem.title} \n"
+
+                    textView.append(result)
                 }
             }
         })
