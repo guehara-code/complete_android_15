@@ -40,10 +40,10 @@ class MainActivity : AppCompatActivity() {
         val responseLiveData: LiveData<Response<Albums>> =
             liveData {
                 try {
-                    val response = retrofitService.getAlbums()
-                    Log.v("TAGY", "PASS LiveData")
-                    Log.v("TAGY", "response" + response.toString())
-                    emit(response)
+//                    val response = retrofitService.getAlbums()
+
+                    val response2 = retrofitService.getSpecificAlbums(6)
+                    emit(response2)
                 } catch (e: Exception) {
                     Log.v("TAGY - error", e.toString())
                 }
