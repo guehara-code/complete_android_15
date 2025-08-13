@@ -36,5 +36,7 @@ class QuizRepository {
                 Log.i("TAGY", "" + data.value)
             }
         }
+
+        return data
     }
 }
