@@ -1,6 +1,6 @@
 package com.example.kotlinquizapp.model
 
-data class Questions(
+data class Question(
     val correct_option: String,
     val option1: String,
     val option2: String,
