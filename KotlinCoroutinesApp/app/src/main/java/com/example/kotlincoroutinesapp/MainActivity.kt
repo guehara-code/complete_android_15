@@ -10,7 +10,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +36,20 @@ class MainActivity : AppCompatActivity() {
             textView.text = counter.toString()
         }
 
+        val main_scope = CoroutineScope(Dispatchers.Main)
+        val background_scoupe = CoroutineScope(Dispatchers.IO)
+        main_scope.launch {
+            Log.v("TAGY", "Using the ${coroutineContext}")
 
-        CoroutineScope(Dispatchers.IO).launch {
-            downloadBigFileFromNet()
+            // switching to IO Dispatcher temporarily
+            withContext(Dispatchers.IO) {
+                Log.v("TAGY", "Using the ${coroutineContext}")
+                Log.v("TAGY", "The IO Thread")
+                delay(1000)
+            }
+
+            // switching to main dispatcher
+            Log.v("TAGY", "Using the ${coroutineContext}")
         }
 
     }
