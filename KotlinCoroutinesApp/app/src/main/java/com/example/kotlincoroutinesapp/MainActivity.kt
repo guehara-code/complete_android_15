@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
 
         val main_scope = CoroutineScope(Dispatchers.Main)
         val background_scoupe = CoroutineScope(Dispatchers.IO)
-        main_scope.launch {
+
+        val job1 = main_scope.launch {
             Log.v("TAGY", "Using the ${coroutineContext}")
 
             // switching to IO Dispatcher temporarily
@@ -51,6 +52,10 @@ class MainActivity : AppCompatActivity() {
             // switching to main dispatcher
             Log.v("TAGY", "Using the ${coroutineContext}")
         }
+
+        // Canceling the coroutine
+        job1.cancel()
+        
 
     }
 
