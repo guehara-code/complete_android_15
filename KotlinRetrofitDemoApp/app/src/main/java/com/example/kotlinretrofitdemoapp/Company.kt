@@ -2,7 +2,7 @@ package com.example.kotlinretrofitdemoapp
 
 import com.google.gson.annotations.SerializedName
 
-data class Country(
+data class Company(
     val name: String,
     val countryCode: String,
 

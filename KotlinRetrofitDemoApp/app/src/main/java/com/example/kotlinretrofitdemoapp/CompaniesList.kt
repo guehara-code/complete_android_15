@@ -1,5 +1,5 @@
 package com.example.kotlinretrofitdemoapp
 
-class CountriesList: ArrayList<Country>() {
+class CompaniesList: ArrayList<Company>() {
 
 }

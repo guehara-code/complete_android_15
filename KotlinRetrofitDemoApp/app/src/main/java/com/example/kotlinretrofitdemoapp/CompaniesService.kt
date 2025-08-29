@@ -6,6 +6,6 @@ import retrofit2.http.GET
 interface CompaniesService {
 
     @GET("/companies")
-    fun getAllCountries(): Response<CountriesList>
+    fun getAllCompanies(): Response<CompaniesList>
 
 }
