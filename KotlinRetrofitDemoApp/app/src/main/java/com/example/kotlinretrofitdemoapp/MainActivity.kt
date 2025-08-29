@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 while (companiesList.hasNext()) {
                     val companyItem = companiesList.next()
 
-                    val companiesResult = " Company Name: ${companyItem.name}"
+                    val companiesResult = " Company Name: ${companyItem.name} \n"
                     resultTextView.append(companiesResult)
                 }
             }

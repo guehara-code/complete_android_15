@@ -6,6 +6,6 @@ import retrofit2.http.GET
 interface CompaniesService {
 
     @GET("/companies")
-    fun getAllCompanies(): Response<CompaniesList>
+    suspend fun getAllCompanies(): Response<CompaniesList>
 
 }
