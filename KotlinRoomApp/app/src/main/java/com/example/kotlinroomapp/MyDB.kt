@@ -12,6 +12,7 @@ abstract class MyDB: RoomDatabase() {
     //Accessing the methods to create or get the Database
     companion object {
         // Singleton pattern
+        @Volatile
         private var Instance: MyDB? = null
 
         fun getDatabase(context: Context): MyDB {
