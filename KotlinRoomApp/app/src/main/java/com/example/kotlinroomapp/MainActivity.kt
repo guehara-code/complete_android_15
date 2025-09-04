@@ -1,6 +1,7 @@
 package com.example.kotlinroomapp
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var itemPrice: EditText
     lateinit var itemQuantity: EditText
     lateinit var dbRecordText: TextView
+    lateinit var saveBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,17 @@ class MainActivity : AppCompatActivity() {
         itemPrice = findViewById(R.id.editText2)
         itemQuantity = findViewById(R.id.editText3)
         dbRecordText = findViewById(R.id.textView3)
+        saveBtn = findViewById(R.id.saveItemBtn)
+
+
+        saveBtn.setOnClickListener {
+            insertItem()
+        }
+
+
+    }
+
+    fun insertItem() {
 
         val name = itemName.text.toString()
         val price = itemPrice.text.toString()
@@ -44,7 +57,6 @@ class MainActivity : AppCompatActivity() {
         val myItem: Item = Item(0 , name, doublePrice, intQuality)
 
         myDAO.insertItem(myItem)
-
     }
 
 }

@@ -21,7 +21,7 @@ abstract class MyDB: RoomDatabase() {
                     context,
                     MyDB::class.java,
                     "time_database"
-                ).build()
+                ).allowMainThreadQueries().build()
                     .also { Instance = it }
             }
         }
