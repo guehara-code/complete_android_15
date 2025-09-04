@@ -1,12 +1,20 @@
 package com.example.kotlinroomapp
 
 import android.os.Bundle
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var itemName: EditText
+    lateinit var itemPrice: EditText
+    lateinit var itemQuantity: EditText
+    lateinit var dbRecordText: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +24,27 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        itemName = findViewById(R.id.editText1)
+        itemPrice = findViewById(R.id.editText2)
+        itemQuantity = findViewById(R.id.editText3)
+        dbRecordText = findViewById(R.id.textView3)
+
+        val name = itemName.text.toString()
+        val price = itemPrice.text.toString()
+        val quantity = itemQuantity.text.toString()
+
+        val doublePrice = price.toDouble()
+        val intQuality = quantity.toInt()
+
+        val myDB = MyDB.getDatabase(applicationContext)
+
+        val myDAO = myDB.itemDAO()
+
+        val myItem: Item = Item(0 , name, doublePrice, intQuality)
+
+        myDAO.insertItem(myItem)
+
     }
+
 }
