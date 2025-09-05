@@ -8,6 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,7 +59,10 @@ class MainActivity : AppCompatActivity() {
 
         val myItem: Item = Item(0 , name, doublePrice, intQuality)
 
-        myDAO.insertItem(myItem)
+        CoroutineScope(Dispatchers.IO).launch {
+            myDAO.insertItem(myItem)
+        }
+
     }
 
 }
