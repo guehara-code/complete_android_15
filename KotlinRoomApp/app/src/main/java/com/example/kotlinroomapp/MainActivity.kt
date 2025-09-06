@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity() {
             insertItem()
         }
 
+        displayAllRecords()
+
 
     }
 
@@ -63,6 +66,22 @@ class MainActivity : AppCompatActivity() {
             myDAO.insertItem(myItem)
         }
 
+    }
+
+    fun displayAllRecords() {
+
+        val myDB = MyDB.getDatabase(applicationContext)
+
+        val myDAO = myDB.itemDAO()
+
+        myDAO.getAllItemsInDB().observe(this, Observer {
+            var result = ""
+
+            for (item in it) {
+                result = it.joinToString("\n")
+            }
+            dbRecordText.text = result
+        })
     }
 
 }
