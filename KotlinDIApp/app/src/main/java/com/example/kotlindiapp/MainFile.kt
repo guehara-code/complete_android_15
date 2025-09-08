@@ -1,5 +1,9 @@
 package com.example.kotlindiapp
 
 fun main() {
-    println(Car().drive())
+    val engine = Engine()
+
+    val car = Car(engine)
+
+    car.drive()
 }
