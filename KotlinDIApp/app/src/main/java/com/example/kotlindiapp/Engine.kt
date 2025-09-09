@@ -1,6 +1,8 @@
 package com.example.kotlindiapp
 
-class Engine {
+import javax.inject.Inject
+
+class Engine @Inject constructor() {
 
     fun start() = "Engine Started"
 }
