@@ -1,9 +1,15 @@
 package com.example.kotlindiapp
 
 fun main() {
-    val engine = Engine()
+//    val engine = Engine()
+//
+//    val car = Car(engine)
+//
+//    car.drive()
 
-    val car = Car(engine)
+    val appComponent: AppComponent = DaggerAppComponent.create()
 
-    car.drive()
+    val car: Car = appComponent.getCar()
+
+    println(car.drive())
 }
