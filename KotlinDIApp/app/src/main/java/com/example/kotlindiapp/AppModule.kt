@@ -16,9 +16,9 @@ object AppModule {
         return Engine()
     }
 
-    @Provides
-    @Singleton
-    fun provideCar(engine: Engine): Car {
-        return  Car(engine)
-    }
+//    @Provides
+//    @Singleton
+//    fun provideCar(engine: Engine): Car {
+//        return  Car(engine)
+//    }
 }

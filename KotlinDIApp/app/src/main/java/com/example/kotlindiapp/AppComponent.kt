@@ -7,5 +7,6 @@ import javax.inject.Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
 
-    fun getCar(): Car
+//    fun getCar(): Car
+fun inject(car: Car)
 }

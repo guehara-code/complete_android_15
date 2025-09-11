@@ -9,7 +9,9 @@ fun main() {
 
     val appComponent: AppComponent = DaggerAppComponent.create()
 
-    val car: Car = appComponent.getCar()
+    val car = Car()
+
+    appComponent.inject(car)
 
     println(car.drive())
 }
