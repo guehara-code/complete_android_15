@@ -1,5 +1,6 @@
 package com.example.kotlinpostsapp.util
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -8,7 +9,7 @@ import com.example.kotlinpostsapp.R
 import com.example.kotlinpostsapp.model.Post
 
 class PostAdapter (private val posts: List<Post>):
-RecyclerView.Adapter<PostAdapter.PostViewHolder> {
+RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     class PostViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.textViewTitleCard)
@@ -16,15 +17,19 @@ RecyclerView.Adapter<PostAdapter.PostViewHolder> {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        TODO("Not yet implemented")
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_posts, parent, false)
+        return PostViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return posts.size
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val post = posts[position]
+        holder.title.text = post.title
+        holder.body.text = post.body
     }
 
 }
