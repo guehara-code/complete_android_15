@@ -5,6 +5,9 @@ plugins {
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 
+
+    id("org.jetbrains.kotlin.kapt") // enable kapt with id()
+
 }
 
 android {
@@ -37,6 +40,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -51,5 +58,18 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation("com.google.dagger:hilt-android:2.56.2")
-    ksp("com.google.dagger:hilt-android-compiler:2.56.2")
+    ksp("com.google.dagger:hilt-compiler:2.56.2")
+
+    val room_version = "2.8.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
+    val lifecycle_version = "2.8.7"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+
+    implementation("org.jetbrains.kotlin:kotlinx-coroutines-android:1.7.3")
+
+
+
 }
