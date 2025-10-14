@@ -8,9 +8,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlincontactsapp.databinding.ActivityMainBinding
+import com.example.kotlincontactsapp.room.Contact
 import com.example.kotlincontactsapp.util.ContactAdapter
 import com.example.kotlincontactsapp.viewmodel.ContactViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -43,7 +46,16 @@ class MainActivity : AppCompatActivity() {
             contacts -> adapter.submitList(contacts)
         }
 
+        binding.addButton.setOnClickListener {
+            val name = binding.nameEditText.text.toString()
+            val phone = binding.phoneEditText.text.toString()
 
+            if(name.isNotEmpty() && phone.isNotEmpty()) {
+
+                val contact = Contact(name = name, phone = phone)
+                viewModel.insert(contact)
+            }
+        }
 
 
     }

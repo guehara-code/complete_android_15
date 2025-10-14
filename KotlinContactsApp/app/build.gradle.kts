@@ -68,7 +68,7 @@ dependencies {
     val lifecycle_version = "2.8.7"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
 
-    implementation("org.jetbrains.kotlin:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 
 
 
